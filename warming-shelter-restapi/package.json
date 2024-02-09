@@ -1,0 +1,46 @@
+{
+  "name": "warming-shelter-restapi",
+  "version": "0.0.1",
+  "description": "This custom software solution is designed to enhance the operation of the HRDC’s year-round homeless warming center in Bozeman, Montana. It aims to assist front desk staff in managing incoming and outgoing guests efficiently. This software aims to minimize the learning curve and reduce the operation burden on front desk staff.",
+  "main": "build/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/server.js",
+    "dev": "concurrently \"tsc -w\" \"nodemon build/server.js\"",
+    "docs": "typedoc --options typedoc.json --entryPointStrategy expand ./src",
+    "clean": "rm -rf build && rm -rf docs",
+    "setup": "chmod +x ./setup.sh && ./setup.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/423s24/Group_3/warming-shelter-restapi"
+  },
+  "author": "Shane Costello, Cody Fingerson, Sage James, Jonathan Neuman",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express-session": "^1.17.10",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.11.17",
+    "@types/nodemailer": "^6.4.14",
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.3",
+    "typedoc": "^0.25.7",
+    "typescript": "^5.3.3"
+  }
+}
