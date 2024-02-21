@@ -1,32 +1,31 @@
 <template>
-  <div class="h-screen flex flex-col justify-center items-center bg-hrdc-teal">
-    <img src="../assets/hrdc-logo.png" alt="Logo" class="mb-4">
-    <div class="bg-white p-8 rounded-md w-full md:w-1/4 h-auto md:h-1/3">
-      <form>
-        <div class="input-field">
-          <label class="block text-gray-700 text-sm font-bold" for="username">
-            Username
-          </label>
-          <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username" type="text" placeholder="Username" required>
+  <section class="h-screen bg-hrdc-teal">
+    <div class="flex flex-col items-center justify-center px-6 mx-auto md:h-screen lg:py-0">
+      <a href="/dashboard" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
+        <img class="w-20 h-15" src="../assets/hrdc-logo.png" alt="logo">
+      </a>
+      <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+        <div>
+          <form @submit="handleFormSubmit">
+            <div>
+              <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
+              <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required>
+            </div>
+            <div>
+              <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+              <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required>
+            </div>
+            <button type="submit" class="w-full text-white bg-hrdc-orange hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Login</button>
+          </form>
         </div>
-        <div class="input-field">
-          <label class="block text-gray-700 text-sm font-bold mt-2" for="password">
-            Password
-          </label>
-          <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="password" type="password" placeholder="Password" required>
-        </div>
-        <div class="mt-3">
-          <button type="submit" class="bg-hrdc-teal rounded p-2 text-white">Login</button>
-          <button type="reset" class="bg-gray-400 rounded p-2 ml-1  text-white">Cancel</button>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
+function handleFormSubmit(event: Event) {
+  event.preventDefault()
+  alert('Form submitted')
+}
 </script>
