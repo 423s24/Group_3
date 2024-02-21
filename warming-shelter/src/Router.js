@@ -6,8 +6,8 @@ import Checkin from "./views/Checkin.vue";
 
 
 const routes = [
-    { path: '/', component: Dashboard },
-    { path: '/login', component: Login },
+    { path: '/', component: Login },
+    { path: '/dashboard', component: Dashboard },
     { path: '/checkin', component: Checkin}
 ]
 
