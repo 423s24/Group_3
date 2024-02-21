@@ -1,23 +1,31 @@
-<!-- Login view -->
 <template>
-    <form>
-        <div>
-            <h1>Login</h1>
-            <sub>Please sign-in to continue</sub>
+  <div class="h-screen flex flex-col justify-center items-center bg-hrdc-teal">
+    <img src="../assets/hrdc-logo.png" alt="Logo" class="mb-4">
+    <div class="bg-white p-8 rounded-md w-full md:w-1/4 h-auto md:h-1/3">
+      <form>
+        <div class="input-field">
+          <label class="block text-gray-700 text-sm font-bold" for="username">
+            Username
+          </label>
+          <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="username" type="text" placeholder="Username" required>
         </div>
-        <div>
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" required>
+        <div class="input-field">
+          <label class="block text-gray-700 text-sm font-bold mt-2" for="password">
+            Password
+          </label>
+          <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="password" type="password" placeholder="Password" required>
         </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
+        <div class="mt-3">
+          <button type="submit" class="bg-hrdc-teal rounded p-2 text-white">Login</button>
+          <button type="reset" class="bg-gray-400 rounded p-2 ml-1  text-white">Cancel</button>
         </div>
-        <div>
-            <button type="submit">Login</button>
-            <button type="reset">Cancel</button>
-        </div>
-    </form>
+      </form>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
