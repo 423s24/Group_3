@@ -1,8 +1,6 @@
 <!-- homepage view -->
 <template>
-    <h1>
-        Dashboard
-    </h1>
+    <Header />
     <br>
     <h2>
         Motivation
@@ -21,4 +19,14 @@
     </p>
 
 </template>
+
+<script>
+    import Header from '../components/Header.vue'
+    export default {
+        name: 'Dashboard',
+        components:{
+            Header
+        }
+    }
+</script>
 
