@@ -1,1 +1,7 @@
 .DS_STORE
+/.idea/.gitignore
+/.idea/Group_3.iml
+/warming-shelter/src/assets/hrdc-220.png
+/warming-shelter/src/assets/hrdc-logo.png
+/.idea/modules.xml
+/.idea/vcs.xml

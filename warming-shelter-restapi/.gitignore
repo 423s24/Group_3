@@ -4,5 +4,5 @@ build/
 docs/
 .env
 .DS_Store
-.idea
-.vscode
+.idea/
+.vscode/
