@@ -42,6 +42,7 @@ declare interface GuestDocument extends Document {
     firstName: string;
     lastName: string;
     DOB: Date;
+    checkInDate: Date;
     accommodation: IAccommodation;
     bunkReservation: IBunkReservation;
     locker: string;
