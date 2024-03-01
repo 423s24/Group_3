@@ -17,6 +17,40 @@ declare interface UserDocument extends Document {
 }
 
 /**
+ * Represents a guest document in the database.
+ */
+
+interface IAccommodation {
+    hasAcc: boolean;
+    accDesc?: string;
+}
+
+interface IBunkReservation {
+    hasRes: boolean;
+    resNum?: string;
+}
+
+interface IBX {
+    warning: boolean;
+    suspension: boolean;
+    noTrespass: boolean;
+    probation: boolean;
+    bxNotes: string;
+}
+
+declare interface GuestDocument extends Document {
+    firstName: string;
+    lastName: string;
+    DOB: Date;
+    checkInDate: Date;
+    accommodation: IAccommodation;
+    bunkReservation: IBunkReservation;
+    locker: string;
+    laundry: boolean;
+    Bx: IBX;
+}
+
+/**
  * Represents a request object with an authenticated user property.
  * @extends {Request}
  */
