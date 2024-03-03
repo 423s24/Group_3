@@ -14,6 +14,10 @@ const GuestSchema: Schema<GuestDocument> = new Schema<GuestDocument>({
         type: Date,
         required: true
     },
+    checkInDate : {
+        type: Date,
+        required: true
+    },
     accommodation: {
         hasAcc: {
             type: Boolean,
