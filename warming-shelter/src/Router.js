@@ -6,6 +6,7 @@ import EnterGuests from "./views/EnterGuests.vue"
 import Login from "./views/Login.vue";
 import Checkin from "./views/Checkin.vue";
 import Error from "./views/Error.vue";
+import ViewAllGuests from "./views/ViewAllGuests.vue"
 
 const routes = [
     { path: '/', component: Login },
@@ -13,6 +14,7 @@ const routes = [
     { path: '/enterguests', component: EnterGuests},
     { path: '/checkin', component: Checkin},
     { path: '/error', component: Error},
+    { path: '/viewallguests', component: ViewAllGuests},
 ]
 
 const router = createRouter({
