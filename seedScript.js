@@ -30,6 +30,7 @@ async function seedDB() {
                 lastName : faker.person.lastName(),
                 DOB : faker.date.birthdate(),
                 isActive : faker.datatype.boolean(),
+                consecutiveDaysStayed : faker.number.int({ min: 1, max: 30 }),
                 latestCheckInDate : faker.date.recent(),
                 HMIS : {
                     isValid : faker.datatype.boolean(),

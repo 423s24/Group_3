@@ -47,6 +47,7 @@ declare interface GuestDocument extends Document {
     lastName: string;
     DOB: Date;
     isActive: boolean;
+    consecutiveDaysStayed: string; 
     latestCheckInDate: Date;
     HMIS : HMIS;
     accommodation: IAccommodation;

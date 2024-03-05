@@ -18,6 +18,10 @@ const GuestSchema: Schema<GuestDocument> = new Schema<GuestDocument>({
         type: Boolean,
         default: false
     },
+    consecutiveDaysStayed: {
+        type: String,
+        default: "0"
+    },
     latestCheckInDate: {
         type: Date
     },
