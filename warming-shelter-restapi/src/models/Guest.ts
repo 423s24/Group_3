@@ -12,7 +12,6 @@ const GuestSchema: Schema<GuestDocument> = new Schema<GuestDocument>({
     },
     DOB: {
         type: Date,
-        required: true
     },
     isActive: {
         type: Boolean,

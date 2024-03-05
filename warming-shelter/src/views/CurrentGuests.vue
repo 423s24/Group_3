@@ -9,6 +9,7 @@
                     <tr>
                         <th class="text-left p-3 text-white">First Name<i class="bi-alarm"></i></th>
                         <th class="text-left p-3 text-white">Last Name</th>
+                        <th class="text-left p-3 text-white">Days Stayed</th>
                         <th class="text-left p-3 text-white">Locker</th>
                         <th class="text-left p-3 text-white"></th>
                     </tr>
@@ -22,6 +23,7 @@
                     >
                         <td class="px-3">{{ guest.firstName }}</td>
                         <td class="px-3">{{ guest.lastName }}</td>
+                        <td class="px-3">{{ guest.consecutiveDaysStayed }}</td>
                         <td class="px-3">{{ guest.locker }}</td>
                         <td class="px-3">
                           <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
