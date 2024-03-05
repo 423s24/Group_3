@@ -29,7 +29,12 @@ async function seedDB() {
                 firstName : faker.person.firstName(),
                 lastName : faker.person.lastName(),
                 DOB : faker.date.birthdate(),
-                checkInDate : faker.date.past(),
+                isActive : faker.datatype.boolean(),
+                latestCheckInDate : faker.date.recent(),
+                HMIS : {
+                    isValid : faker.datatype.boolean(),
+                    enterDate : faker.date.past()
+                },
                 accommodation : {
                     hasAcc : faker.datatype.boolean(),
                     accDesc : faker.string.sample()

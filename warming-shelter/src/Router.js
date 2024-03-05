@@ -7,6 +7,8 @@ import Login from "./views/Login.vue";
 import Checkin from "./views/Checkin.vue";
 import Error from "./views/Error.vue";
 import ViewAllGuests from "./views/ViewAllGuests.vue"
+import GuestProfile from './views/GuestProfile.vue';
+import CurrentGuests from './views/CurrentGuests.vue';
 
 const routes = [
     { path: '/', component: Login },
@@ -15,6 +17,8 @@ const routes = [
     { path: '/checkin', component: Checkin},
     { path: '/error', component: Error},
     { path: '/viewallguests', component: ViewAllGuests},
+    { path: '/currentguests', component: CurrentGuests},
+    { path: '/guest/:id', name: 'GuestProfile', component: GuestProfile}
 ]
 
 const router = createRouter({

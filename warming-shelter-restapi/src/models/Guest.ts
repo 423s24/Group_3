@@ -14,9 +14,21 @@ const GuestSchema: Schema<GuestDocument> = new Schema<GuestDocument>({
         type: Date,
         required: true
     },
-    checkInDate : {
-        type: Date,
-        required: true
+    isActive: {
+        type: Boolean,
+        default: false
+    },
+    latestCheckInDate: {
+        type: Date
+    },
+    HMIS:{
+        isValid: {
+            type: Boolean,
+            default: false
+        },
+        enterDate: {
+            type: Date
+        }
     },
     accommodation: {
         hasAcc: {
