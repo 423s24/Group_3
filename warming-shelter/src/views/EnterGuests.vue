@@ -3,7 +3,7 @@
       <Header />
       <br />
   
-      <div class="flex flex-row items-center justify-center">
+      <div class="flex flex-row justify-center">
         <div class="w-2/3 p-4 m-4">
             <div class="w-full m-4 p-4">
                 <form class="w-full p-0 m-0" @submit.prevent="addGuest">
@@ -45,6 +45,27 @@
           <CounterCard class="w-full" :title="guestList.length + ' Guests Checked In'" :content="guestList.length + ' Overnight Stays'" />
           <div class="bg-white rounded-lg p-4 border-2 border-bg-blue-900 m-4 w-full">
             <p>Key:</p>
+            <br>
+            <div class="flex flex-row items-center">
+              <div class=" border-black border-4 w-10 h-10 m-3"></div>
+              <div class="">No Discrepancies</div>
+            </div>
+            <div class="flex flex-row items-center">
+              <div class="bg-purple-400 border-black border-4 w-10 h-10 m-3"></div>
+              <div class="">Has Recent Notes</div>
+            </div>
+            <div class="flex flex-row items-center">
+              <div class=" bg-yellow-300 border-black border-4 w-10 h-10 m-3"></div>
+              <div class="">Need Info Added to HMIS</div>
+            </div>
+            <div class="flex flex-row items-center">
+              <div class="bg-lime-900 border-black border-4 w-10 h-10 m-3"></div>
+              <div class="">Services Only</div>
+            </div>
+            <div class="flex flex-row items-center">
+              <div class="bg-red-500 border-black border-4 w-10 h-10 m-3"></div>
+              <div class="">No Trespass</div>
+            </div>
           </div>
         </div>
       </div>
