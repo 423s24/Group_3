@@ -12,7 +12,26 @@ const GuestSchema: Schema<GuestDocument> = new Schema<GuestDocument>({
     },
     DOB: {
         type: Date,
-        required: true
+    },
+    isActive: {
+        type: Boolean,
+        default: false
+    },
+    consecutiveDaysStayed: {
+        type: String,
+        default: "0"
+    },
+    latestCheckInDate: {
+        type: Date
+    },
+    HMIS:{
+        isValid: {
+            type: Boolean,
+            default: false
+        },
+        enterDate: {
+            type: Date
+        }
     },
     accommodation: {
         hasAcc: {

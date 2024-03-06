@@ -19,6 +19,10 @@ declare interface UserDocument extends Document {
 /**
  * Represents a guest document in the database.
  */
+interface HMIS {
+    isValid: boolean;
+    enterDate: Date
+}
 
 interface IAccommodation {
     hasAcc: boolean;
@@ -42,6 +46,10 @@ declare interface GuestDocument extends Document {
     firstName: string;
     lastName: string;
     DOB: Date;
+    isActive: boolean;
+    consecutiveDaysStayed: string; 
+    latestCheckInDate: Date;
+    HMIS : HMIS;
     accommodation: IAccommodation;
     bunkReservation: IBunkReservation;
     locker: string;
