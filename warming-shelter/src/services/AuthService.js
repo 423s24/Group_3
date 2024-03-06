@@ -26,8 +26,16 @@ class AuthService {
         return res.data;
     }
 
-    logout() {
+    async logout() {
         localStorage.removeItem('user');
+        const res = await axios.get(API_URL + '/logout');
+
+        if(res.status === 200){
+            this.isAuthenticated = false;
+            this.user = null;
+        }
+
+        return res.data;
     }
 
     createNewUser(user){}
