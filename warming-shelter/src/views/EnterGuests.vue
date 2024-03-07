@@ -36,7 +36,7 @@
               <li v-for="guest in guestList" :key="guest.id">
                 <!-- <div :class="getBackgroundColorClass(guest)" class="inline-block p-4 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded cursor-pointer"> -->
                   <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
-                    <div :style="{ backgroundColor: getBackgroundColorClass(guest)}" class="inline-block p-4 m-4 border-black border-2 font-bold rounded cursor-pointer transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:duration-300 ...">
+                    <div :style="{ backgroundImage: getBackgroundColorClass(guest)}" class="inline-block p-4 m-4 border-black border-2 font-bold rounded cursor-pointer transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:duration-300 ...">
                       {{ guest.firstName + " " + guest.lastName}}
                     </div>
                   </router-link>
@@ -155,15 +155,18 @@
       },
 
       getBackgroundColorClass(guest){
-        if((guest.bx_noTrespass === true)){
-          return 'rgb(239 68 68)'
+        if((guest.bx_noTrespass === true && guest.hmis_valid === false)){
+          return 'linear-gradient(to right, rgb(239 68 68), rgb(239 68 68) 50%, rgb(253 224 71), rgb(253 224 71) 50%)'
+        }
+        else if((guest.bx_noTrespass === true)){
+          return 'linear-gradient(90deg, rgb(239 68 68), rgb(239 68 68))'
         }
         else if(guest.hmis_valid === false){
-          return 'rgb(253 224 71)'
+          return 'linear-gradient(90deg, rgb(253 224 71), rgb(253 224 71))'
         }
         // else if(guest.laundry)
         else{
-          return 'white'
+          return 'linear-gradient(90deg, white, white)'
         }
       }
     }
