@@ -2,7 +2,7 @@
 
 ## User  Documentation
 
-v0.0.<br><br>
+v0.1.0<br><br>
 <sup>
 Shane Costello <br>
 Cody Fingerson <br>
@@ -23,4 +23,4 @@ Navigate to the web app URL
 Still waiting to visit warming shelter to determine how to best design our user interface to fit their workflow.  
 <br>
 **How to report a bug**:<br>
-To submit a bug, go to https://github.com/ShaneCost/esof423-warming_shelter/issues and click the “New Issue” button.
+To submit a bug, go to https://github.com/423s24/Group_3/issues and click the “New Issue” button.
