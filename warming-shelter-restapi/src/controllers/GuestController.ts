@@ -16,13 +16,18 @@ class GuestController {
             consecutiveDaysStayed: guest.consecutiveDaysStayed,
             latestCheckInDate: guest.latestCheckInDate,
             hmis_valid: guest.HMIS.isValid,
-            hmus_date: guest.HMIS.enterDate,
+            hmis_date: guest.HMIS.enterDate,
             has_accommodation: guest.accommodation.hasAcc,
             desc_accommodation: guest.accommodation.accDesc,
             has_bunk_reservation: guest.bunkReservation.hasRes,
             bunk_reservation_number: guest.bunkReservation.resNum,
             locker: guest.locker,
-            laundry: guest.laundry
+            laundry: guest.laundry,
+            bx_warning: guest.Bx.warning,
+            bx_suspension: guest.Bx.suspension,
+            bx_noTrespass: guest.Bx.noTrespass,
+            bx_probation: guest.Bx.probation,
+            bx_bxNotes: guest.Bx.bxNotes
         }));
 
 

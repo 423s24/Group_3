@@ -34,7 +34,8 @@
             <h2>Guest List:</h2>
             <ul class="flex">
               <li v-for="guest in guestList" :key="guest.id">
-                <div class="inline-block p-4 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded cursor-pointer">
+                <!-- <div :class="getBackgroundColorClass(guest)" class="inline-block p-4 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded cursor-pointer"> -->
+                <div :style="{ backgroundColor: getBackgroundColorClass(guest)}" class="inline-block p-4 m-4 bg-blue-500 hover:bg-blue-700 border-black border-2 font-bold rounded cursor-pointer">
                   {{ guest.firstName + " " + guest.lastName}}
                 </div>
               </li>
@@ -149,6 +150,19 @@
 
       checkin(guest){
         guest.isActive = true;
+      },
+
+      getBackgroundColorClass(guest){
+        if((guest.bx_noTrespass === true)){
+          return 'rgb(239 68 68)'
+        }
+        else if(guest.hmis_valid === false){
+          return 'rgb(253 224 71)'
+        }
+        // else if(guest.laundry)
+        else{
+          return 'white'
+        }
       }
     }
   }
