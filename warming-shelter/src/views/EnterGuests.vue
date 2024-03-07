@@ -32,12 +32,14 @@
   
           <div class="bg-white rounded-lg p-4 border-2 border-bg-blue-900 m-4 w-full">
             <h2>Guest List:</h2>
-            <ul class="flex">
+            <ul class="flex flex-wrap">
               <li v-for="guest in guestList" :key="guest.id">
                 <!-- <div :class="getBackgroundColorClass(guest)" class="inline-block p-4 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded cursor-pointer"> -->
-                <div :style="{ backgroundColor: getBackgroundColorClass(guest)}" class="inline-block p-4 m-4 bg-blue-500 hover:bg-blue-700 border-black border-2 font-bold rounded cursor-pointer">
-                  {{ guest.firstName + " " + guest.lastName}}
-                </div>
+                  <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
+                    <div :style="{ backgroundColor: getBackgroundColorClass(guest)}" class="inline-block p-4 m-4 border-black border-2 font-bold rounded cursor-pointer transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:duration-300 ...">
+                      {{ guest.firstName + " " + guest.lastName}}
+                    </div>
+                  </router-link>
               </li>
             </ul>
           </div>
