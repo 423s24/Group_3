@@ -9,7 +9,7 @@
                     <router-link to="/currentguests" class="mr-6 hover:text-hrdc-orange">View Current Guests</router-link>
                     <router-link to="/dashboard" class="mr-6 hover:text-hrdc-orange">Assign Spaces</router-link>
                     <router-link to="/viewallguests" class="mr-6 hover:text-hrdc-orange">View All Data</router-link>
-                    <router-link to="/dashboard" class="mr-6 hover:text-hrdc-orange">Resources</router-link>
+                    <router-link to="/resources" class="mr-6 hover:text-hrdc-orange">Resources</router-link>
                     <router-link to="/" class="mr-6 hover:text-hrdc-orange" @click.native="logout">Logout</router-link>
                     <!-- <li class="mr-6 hover:text-hrdc-orange"><a href = "#">Dashboard</a></li>
                     <li class="mr-6 hover:text-hrdc-orange"><a href = "#">Enter Guests</a></li>

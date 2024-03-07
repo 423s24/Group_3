@@ -9,6 +9,7 @@ import Error from "./views/Error.vue";
 import ViewAllGuests from "./views/ViewAllGuests.vue"
 import GuestProfile from './views/GuestProfile.vue';
 import CurrentGuests from './views/CurrentGuests.vue';
+import Resources from './views/Resources.vue';
 
 const routes = [
     { path: '/', component: Login },
@@ -18,6 +19,7 @@ const routes = [
     { path: '/error', component: Error},
     { path: '/viewallguests', component: ViewAllGuests},
     { path: '/currentguests', component: CurrentGuests},
+    { path: '/resources', component: Resources},
     { path: '/guest/:id', name: 'GuestProfile', component: GuestProfile}
 ]
 
