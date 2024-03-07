@@ -8,7 +8,7 @@
               id="search"
               v-model="searchQuery"
               type="text"
-              placeholder="Enter name..."
+              placeholder="Search name..."
               class="border-2 border-gray-300 px-2 py-1 rounded"
             />
           </div>
