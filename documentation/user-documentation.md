@@ -13,11 +13,11 @@ v0.1.1
 
 ## Table Of Contents
 
-- [Description](###description)
-- [How to obtain and install software](####obtain-and-install-software)
-- [How to run software](####run-software)
-- [How to use software](####use-software)
-- [How to report a bug](####report-a-bug)
+- [Description](#description)
+- [How to obtain and install software](#obtain-and-install-software)
+- [How to run software](#run-software)
+- [How to use software](#use-software)
+- [How to report a bug](#report-a-bug)
 
 ### Description
 
