@@ -14,11 +14,11 @@ v0.1.1
 ## Table Of Contents
 
 - [Description](#description)
-- [How to obtain and install software](#obtain-and-install-software)
-- [How to run software](#run-software)
-- [How to use software](#use-software)
-- [How to report a bug](#report-a-bug)
-
+- [How to obtain and install software](#how-to-obtain-and-install-software)
+- [How to run software](#how-to-run-software)
+- [How to use software](#how-to-use-software)
+- [How to report a bug](#how-to-report-a-bug)
+- 
 ### Description
 
 This custom software solution is designed to enhance the operation of the HRDC’s year-round homeless warming center
