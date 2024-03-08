@@ -1,34 +1,36 @@
 <template>
-    <div>
-      <Header />
-      <br>
-      <Wrapper>
-        <div class="flex">
-            <CounterCard title="Card Title" content="Card content goes here" />
-            <CounterCard title="Card Title" content="Card content goes here" />
-            <CounterCard title="Card Title" content="Card content goes here" />
-        </div>
+  <div>
+    <Header/>
+    <br>
+    <Wrapper>
+      <h1>Welcome, {{ firstName }} {{lastName}}!</h1>
+      <div class="flex">
+        <CounterCard title="Card Title" content="Card content goes here"/>
+        <CounterCard title="Card Title" content="Card content goes here"/>
+        <CounterCard title="Card Title" content="Card content goes here"/>
+      </div>
+    </Wrapper>
+  </div>
+</template>
 
-        
-      </Wrapper>
-    </div>
-  </template>
-  
-  <script>
-  import Header from '../components/Header.vue'
-  import Wrapper from '../components/Wrapper.vue'
-  import CounterCard from '../components/CounterCard.vue'
-  
-  export default {
-    name: 'Dashboard',
-    components: {
-      Header,
-      Wrapper,
-      CounterCard
-    },
-  
+<script>
+import Header from '../components/Header.vue'
+import Wrapper from '../components/Wrapper.vue'
+import CounterCard from '../components/CounterCard.vue'
+import store from "../store/store.js";
+
+export default {
+  name: 'Dashboard',
+  components: {
+    Header,
+    Wrapper,
+    CounterCard
+  },
+
   data() {
     return {
+      firstName: '',
+      lastName: '',
       sites: [
         {
           uid: 1,
@@ -59,7 +61,12 @@
         }
       ]
     }
-    }   
+  },
+  async created() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.firstName = user.user.firstName;
+    this.lastName = user.user.lastName;
+  }
 }
-  </script>
+</script>
   
