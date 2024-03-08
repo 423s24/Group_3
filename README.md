@@ -1,11 +1,12 @@
 # <ins>ESOF 423</ins>: Warming Shelter Internal Dashboard
 feature(s): __placeholder_
-+ [vue webpage](warming-shelter)
-+ [rest API](warming-shelter-restapi)
++ [vue frontend](warming-shelter)
++ [rest API backend](warming-shelter-restapi)
 ## Documentation 
 + [User Documentation](documentation/user-documentation.md)
 + [Developer Documentation](documentation/developer-documentation.md)
-## Development Resources 
-+ [Miro Board](https://miro.com/app/board/uXjVNwgTvPg=/)
-+ [Working Documentation](https://docs.google.com/document/d/1mHYhYd9OutI6fMArA5x8P96BLqI7eUwn0tWa3hMybOA/edit)
-+ [Figma](https://www.figma.com/files/team/1336392980857342986/ESOF-423?fuid=1336393361179259357)
+## Scrum Artifacts
++ [Class Diagram](Class_Diagram.png)
++ [Sprint Backlog (Miro Board)](https://miro.com/app/board/uXjVNwgTvPg=/)
++ [Burndown Chart](https://docs.google.com/spreadsheets/d/1G-hcGIVEK-EKRsp6uCBdT0qUcOHVx9o86jCKsIm3S-U/edit#gid=2070898809)
++ [UI Mockup (Figma)](https://www.figma.com/file/y9VvcpAj8Jtrc6drjBlYA7/HRDC-Dashboard?type=design&node-id=0-1&mode=design)
