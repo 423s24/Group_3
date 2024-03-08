@@ -1,4 +1,5 @@
 <template>
+<<<<<<< Updated upstream
   <div>
     <Header/>
     <br>
@@ -27,6 +28,41 @@ export default {
     CounterCard
   },
 
+=======
+    <div>
+      <Header />
+      <br>
+      <Wrapper>
+        <div class="flex">
+            <CounterCard title="23 Current Guests" content="Card content goes here" />
+            <CounterCard title="26 Bunks Available" content="Card content goes here" />
+            <CounterCard title="18 Lockers Available" content="Card content goes here" />
+        </div>
+
+        <NoteSection NoteTitle="Guest Notes"/>
+        <NoteSection NoteTitle="Nightly Celebrations"/>
+
+        
+      </Wrapper>
+    </div>
+  </template>
+  
+  <script>
+  import Header from '../components/Header.vue'
+  import Wrapper from '../components/Wrapper.vue'
+  import CounterCard from '../components/CounterCard.vue'
+  import NoteSection from '../components/NoteSection.vue'
+  
+  export default {
+    name: 'Dashboard',
+    components: {
+      Header,
+      Wrapper,
+      CounterCard,
+      NoteSection
+    },
+  
+>>>>>>> Stashed changes
   data() {
     return {
       firstName: '',
