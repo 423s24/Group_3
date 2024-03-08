@@ -1,24 +1,80 @@
-<!-- homepage view -->
 <template>
-    <h1>
-        Dashboard
-    </h1>
+  <div>
+    <Header/>
     <br>
-    <h2>
-        Motivation
-    </h2>
+    <Wrapper>
+      <h1 class="text-center">Welcome, {{ firstName }} {{lastName}}!</h1>
+      <div class="flex">
+        <CounterCard title="Card Title" content="Card content goes here"/>
+        <CounterCard title="Card Title" content="Card content goes here"/>
+        <CounterCard title="Card Title" content="Card content goes here"/>
+      </div>
 
-    <p>
-        The primary motivation behind the development of this software stems from the need to streamline and enhance the efficiency of managing guest data at the HRDC's homeless warming center. Prior to the introduction of this software, the center relied heavily on manual data entry processes, utilizing Google Sheets to input and manage information across two separate databases: one internal (CaseWorthy) and one statewide (HMIS). This method was not only time-consuming but also prone to errors, leading to inefficiencies in data management and reporting.
-    </p>
-    <br>
-    <h2>
-        Purpose
-    </h2>
+        <NoteSection NoteTitle="Guest Notes"/>
+        <NoteSection NoteTitle="Nightly Celebrations"/>
 
-    <p>
-        This custom software solution is designed to enhance the operation of the HRDC’s year-round homeless warming center in Bozeman, Montana. It aims to assist front desk staff in managing incoming and outgoing guests efficiently. This software aims to minimize the learning curve and reduce the operation burden on front desk staff.
-    </p>
-
+    </Wrapper>
+  </div>
 </template>
 
+
+  
+  <script>
+  import Header from '../components/Header.vue'
+  import Wrapper from '../components/Wrapper.vue'
+  import CounterCard from '../components/CounterCard.vue'
+  import NoteSection from '../components/NoteSection.vue'
+  import store from "../store/store.js";
+  
+  export default {
+    name: 'Dashboard',
+    components: {
+      Header,
+      Wrapper,
+      CounterCard,
+      NoteSection
+    },
+  
+  data() {
+    return {
+      firstName: '',
+      lastName: '',
+      sites: [
+        {
+          uid: 1,
+          name: 'WebDigitalCommunications',
+          link: 'https://www.montana.edu/web/',
+          errors: 0,
+          page: 1,
+          docs: 0,
+          lastScanned: 'January 25, 2024'
+        },
+        {
+          uid: 2,
+          name: 'ComputerScience',
+          link: 'https://www.montana.edu/cs/',
+          errors: 0,
+          page: 1,
+          docs: 0,
+          lastScanned: 'January 1, 2022'
+        },
+        {
+          uid: 3,
+          name: 'ComputerScience',
+          link: 'https://www.montana.edu/cs/',
+          errors: 0,
+          page: 1,
+          docs: 0,
+          lastScanned: 'January 1, 2022'
+        }
+      ]
+    }
+  },
+  async created() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.firstName = user.user.firstName;
+    this.lastName = user.user.lastName;
+  }
+}
+</script>
+  

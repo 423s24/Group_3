@@ -9,6 +9,7 @@ import Database from "./config/Database";
 import errorHandler from "./middleware/ErrorHandler";
 
 import userRouter from "./routes/userRoutes";
+import guestRouter from "./routes/guestRoutes";
 
 /**
  * The main class of the server application.
@@ -79,6 +80,7 @@ class Server {
 
         // Use routes in application
         this.app.use("/api/users", userRouter);
+        this.app.use("/api/guests", guestRouter);
     }
 
     private generateDocsRoutes() {

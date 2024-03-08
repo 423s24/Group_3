@@ -9,13 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.6.7",
     "vue": "^3.3.11",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
     "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.34",
+    "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "vite": "^5.0.8"
   }
