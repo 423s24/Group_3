@@ -2,7 +2,7 @@
 
 ## Developer Documentation
 
-v0.0.<br><br>
+v0.1.0<br><br>
 <sup>
 Shane Costello <br>
 Cody Fingerson <br>
@@ -119,10 +119,7 @@ velitegestasduiidornarearcu.
 
 ## Errors and Bugs
 
-Loremipsumdolorsitamet,consecteturadipiscingelit,seddoeiusmodtempor
-incididuntutlaboreetdoloremagnaaliqua.Aliquetbibendumenimfacilisisgravida
-nequeconvallis.Placeratduisultricieslacussedturpistinciduntidaliquet.Volutpatest
-velitegestasduiidornarearcu.
+To report any bugs or errors, please visit the GitHub repo https://github.com/423s24/Group_3/issues
 
 ## Code Format and Documentation
 
