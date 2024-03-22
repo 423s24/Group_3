@@ -20,7 +20,7 @@ const routes = [
     { path: '/viewallguests', component: ViewAllGuests},
     { path: '/currentguests', component: CurrentGuests},
     { path: '/resources', component: Resources},
-    { path: '/guest/:id', name: 'GuestProfile', component: GuestProfile}
+    { path: '/guest/:id', name: 'GuestProfile', component: GuestProfile},
 ]
 
 const router = createRouter({

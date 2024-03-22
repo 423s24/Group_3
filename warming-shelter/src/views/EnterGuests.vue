@@ -137,6 +137,7 @@
                     lastName : fullName[1]
                 }
                 this.guestList.push(newGuest)
+                this.checkin(newGuest)
                 this.searchQuery = ""
             }
         } else {
@@ -152,6 +153,22 @@
 
       checkin(guest){
         guest.isActive = true;
+        if (this.isYesterday(guest.latestCheckInDate)){
+          guest.consecutiveDaysStayed += 1
+        }
+        guest.latestCheckInDate = new Date();
+
+      },
+
+      isYesterday(comparedDate) {
+        const today = new Date();
+
+        const yesterday = new Date(today);
+        yesterday.setDate(today.getDate() - 1);
+
+        const comparedDateFormatted = new Date(comparedDate.getFullYear(), comparedDate.getMonth(), comparedDate.getDate());
+
+        return comparedDateFormatted.getTime() === yesterday.getTime();
       },
 
       getBackgroundColorClass(guest){

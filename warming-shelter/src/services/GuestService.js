@@ -44,6 +44,23 @@ class GuestService {
         return res.data;
     }
 
+    async updateGuest(id, profile){
+        console.log("Profile in service", profile);
+        try {
+            const res = await axios.put(`${API_URL}/update`, { id: id, profile: profile });
+            
+            if (res.status === 200) {
+                localStorage.setItem('profile', JSON.stringify(res.data));
+                this.profile = res.data;
+            }
+    
+            return res.data;
+        } catch (error) {
+            console.error("Error updating profile:", error);
+            throw error; // Rethrow the error for further handling, or handle it appropriately.
+        }
+    }
+
 }
 
 export default new GuestService();
