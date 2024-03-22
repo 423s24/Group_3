@@ -115,6 +115,14 @@
         .catch((error) => {
           console.error('Error fetching guests:', error)
         })
+        store.dispatch("guestModule/getCurrent")
+        .then((data) => {
+          this.guestList = data.guests;
+          console.log(this.guestList);
+        })
+        .catch((error) => {
+          console.error("Error fetching guests:", error);
+        });
     },
     methods: {
       addGuest() {
@@ -137,7 +145,7 @@
                     lastName : fullName[1]
                 }
                 this.guestList.push(newGuest)
-                this.checkin(newGuest)
+                //this.checkin(newGuest) Commented out for now
                 this.searchQuery = ""
             }
         } else {
@@ -153,10 +161,19 @@
 
       checkin(guest){
         guest.isActive = true;
-        if (this.isYesterday(guest.latestCheckInDate)){
-          guest.consecutiveDaysStayed += 1
-        }
-        guest.latestCheckInDate = new Date();
+        // if (this.isYesterday(guest.latestCheckInDate)){
+        //   guest.consecutiveDaysStayed += 1
+        // }
+        //guest.latestCheckInDate = new Date();
+        console.log("Profile before dispatch:", guest);
+        store.dispatch("guestModule/updateProfile", { id: guest.id, profile: guest})
+        .then(() => {
+          console.log("Profile updated successfully.");
+          //this.isEditing = false; // Exit edit mode after saving
+        })
+        .catch((error) => {
+          console.error("Error updating profile:", error);
+        });
 
       },
 
