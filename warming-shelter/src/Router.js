@@ -10,6 +10,7 @@ import ViewAllGuests from "./views/ViewAllGuests.vue"
 import GuestProfile from './views/GuestProfile.vue';
 import CurrentGuests from './views/CurrentGuests.vue';
 import Resources from './views/Resources.vue';
+import AssignSpaces from './views/AssignSpaces.vue';
 
 const routes = [
     { path: '/', component: Login },
@@ -21,6 +22,7 @@ const routes = [
     { path: '/currentguests', component: CurrentGuests},
     { path: '/resources', component: Resources},
     { path: '/guest/:id', name: 'GuestProfile', component: GuestProfile},
+    { path: '/assignspaces', component: AssignSpaces}
 ]
 
 const router = createRouter({
