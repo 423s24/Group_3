@@ -183,7 +183,7 @@ class GuestController {
             consecutiveDaysStayed: 1,
             latestCheckInDate: new Date(),
             HMIS: {
-                isValue: false,
+                isValid: false,
                 enterDate: null
             },
             accommodation: {
@@ -207,7 +207,6 @@ class GuestController {
 
         if(newGuest) {
             res.status(200).json({ 
-                newGuest: newGuest,
                 value: "success"
             })
         } else {

@@ -147,6 +147,9 @@
                     firstName : fullName[0],
                     lastName : fullName[1]
                 }
+                // Works to make a new guest, but isn't properly pushed to guest list?
+                // Need to refresh page to get object to appear in guest lists
+                // Can fix by having the makeNewGuest method return the new guest object but dunno how
                 store.dispatch("guestModule/makeNewGuest", { profile: newGuest })
                 .then(() => {
                   console.log("New guest creating success")
@@ -155,8 +158,7 @@
                   console.error("Error creating new guest object:", error);
                 })
                 this.guestList.push(newGuest)
-                
-                //this.checkin(newGuest) Commented out for now
+                // this.checkin(newGuest)
                 this.searchQuery = ""
             }
         } else {
