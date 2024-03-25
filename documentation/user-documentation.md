@@ -50,9 +50,9 @@ Navigate to the web app URL  (https://placeholder.com)
       More information will be available soon.
 
     - **Enter Guests**: This feature streamlines the check-in process, displaying each guest's status, recent notes,
-      required HMIS information, services, and no trespass orders. Click on a guest's name to view their full profile.
+      required HMIS information, services, and no trespass orders. Click on a guest's name to view their full profile. Guests added here are checked in and are visible both on the Enter Guests page as well as the View Current Guests page. All currently checked in guests can be checked out by clicking on the "Checkout all Guests" button. This will also remove the guests from the View Current Guests page.
 
-    - **View Current Guests**: Here, you can get an overview of all guests staying overnight at the facility.
+    - **View Current Guests**: Here, you can get an overview of all guests staying overnight at the facility. Clicking on the "View Profile" button will take you to the guests' profile that has more information about the guest.
 
     - **Assign Spaces**: Use this option to allocate bunk spaces. Additional details will be provided later.
 
