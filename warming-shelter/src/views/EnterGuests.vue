@@ -16,6 +16,7 @@
                     />
                 </form>
 
+
                     <div v-if="searchPredict.length > 0" class="search-results">
                         <ul>
                             <li
@@ -26,8 +27,7 @@
                                 {{ result.firstName + " " + result.lastName }}
                             </li>
                          </ul>
-                    </div>
-                
+                    </div>   
             </div>
   
           <div class="bg-white rounded-lg p-4 border-2 border-bg-blue-900 m-4 w-full">
@@ -46,6 +46,9 @@
         </div>
         <div class="w-1/3 p-4">
           <CounterCard class="w-full" :title="guestList.length + ' Guests Checked In'" :content="guestList.length + ' Overnight Stays'" />
+          <div>
+            <button @click = "checkoutAll">Checkout All Guests</button>
+          </div>
           <div class="bg-white rounded-lg p-4 border-2 border-bg-blue-900 m-4 w-full">
             <p>Key:</p>
             <br>
@@ -183,6 +186,22 @@
           console.error("Error updating profile:", error);
         });
 
+      },
+
+      checkoutAll(){
+        const guestsToCheckout = this.guestList
+        for (const guest of guestsToCheckout){
+          guest.isActive = false;
+          console.log("Profile before dispatch:", guest);
+          store.dispatch("guestModule/updateProfile", { id: guest.id, profile: guest})
+          .then(() => {
+            console.log("Profile updated successfully.");
+          })
+          .catch((error) => {
+            console.error("Error updating profile:", error);
+          });
+        }
+        this.guestList = [];
       },
 
       isYesterday(comparedDate) {
