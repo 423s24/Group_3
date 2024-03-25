@@ -61,6 +61,21 @@ class GuestService {
         }
     }
 
-}
+    async newGuest(profile){
+        try {
+            const res = await axios.post(`${API_URL}/new`, { profile: profile });
 
+            if (res.status == 200){
+                console.log("made new guest object successfully")
+                this.new = res.data
+            }
+
+            return res.data
+        } catch(error) {
+            console.error("Error creating new guest: ", error)
+            throw error
+        }
+    }
+
+}
 export default new GuestService();

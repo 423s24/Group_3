@@ -171,6 +171,51 @@ class GuestController {
             throw new Error('Guest update failed');
         }
     });
+
+    public static makeNewGuest = asyncHandler(async (req: Request, res: Response) => {
+        const { profile } = req.body;
+
+        const newGuest = await Guest.insertMany( {
+            firstName: profile.firstName,
+            lastName: profile.lastName,
+            dob: null,
+            isActive: true,
+            consecutiveDaysStayed: 1,
+            latestCheckInDate: new Date(),
+            HMIS: {
+                isValue: false,
+                enterDate: null
+            },
+            accommodation: {
+                hasAcc: false,
+                accDesc: null
+            },
+            bunkReservation: {
+                hasRes: false,
+                resNum: null
+            },
+            locker: null,
+            laundry: false,
+            Bx: {
+                warning: false,
+                suspension: false,
+                noTrespass: false,
+                probation: false,
+                bxNotes: null
+            }
+        })
+
+        if(newGuest) {
+            res.status(200).json({ 
+                newGuest: newGuest,
+                value: "success"
+            })
+        } else {
+            res.status(500);
+            throw new Error('Guest update failed');
+        }
+    });
+
 }
 
 export default GuestController;

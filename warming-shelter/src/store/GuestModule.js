@@ -45,12 +45,22 @@ export const guestModule = {
         async updateProfile({ commit }, payload){
             const { id, profile } = payload;
             try{
-                console.log("Profile in module", profile);
                 const res = await GuestService.updateGuest(id, profile);
                 commit('updateSuccess', res);
                 return Promise.resolve(res);
             } catch(error){
                 commit('updateFailure')
+                return Promise.reject(error);
+            }
+        },
+        async makeNewGuest({ commit }, payload){
+            const { profile } = payload
+            try{
+                const res = await GuestService.newGuest(profile);
+                commit('newSuccess', res);
+                return Promise.resolve(res);
+            } catch(error){
+                commit('newFailure')
                 return Promise.reject(error);
             }
         }
@@ -79,6 +89,14 @@ export const guestModule = {
         updateFailure(state){
             state.profile = null;
             state.errorMessage = 'Unable to update guest profile';
+        },
+        newSuccess(state, res){
+            state.profile = res
+            state.errorMessage = '';
+        },
+        newFailure(state){
+            state.profile = null;
+            state.errorMessage = 'Unable to make new guest object';
         }
     }
 }

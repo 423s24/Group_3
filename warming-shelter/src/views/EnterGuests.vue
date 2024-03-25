@@ -144,7 +144,15 @@
                     firstName : fullName[0],
                     lastName : fullName[1]
                 }
+                store.dispatch("guestModule/makeNewGuest", { profile: newGuest })
+                .then(() => {
+                  console.log("New guest creating success")
+                })
+                .catch((error) => {
+                  console.error("Error creating new guest object:", error);
+                })
                 this.guestList.push(newGuest)
+                
                 //this.checkin(newGuest) Commented out for now
                 this.searchQuery = ""
             }

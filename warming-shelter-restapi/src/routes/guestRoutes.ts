@@ -19,4 +19,7 @@ guestRouter.get('/current', GuestController.getCurrentGuests);
 // Update Guest by ID Route
 guestRouter.put('/update', GuestController.updateGuestById);
 
+// Create new guest object
+guestRouter.post('/new', GuestController.makeNewGuest);
+
 export default guestRouter;
