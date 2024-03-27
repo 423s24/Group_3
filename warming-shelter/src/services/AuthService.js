@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://esof423.cs.montana.edu:3000/api/users';
+const API_URL = 'http://localhost:8000/api/users';
 
 class AuthService {
     static isAuthenticated = false;
