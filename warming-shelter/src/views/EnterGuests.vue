@@ -16,6 +16,7 @@
                     />
                 </form>
 
+
                     <div v-if="searchPredict.length > 0" class="search-results">
                         <ul>
                             <li
@@ -26,8 +27,7 @@
                                 {{ result.firstName + " " + result.lastName }}
                             </li>
                          </ul>
-                    </div>
-                
+                    </div>   
             </div>
   
           <div class="bg-white rounded-lg p-4 border-2 border-bg-blue-900 m-4 w-full">
@@ -46,6 +46,9 @@
         </div>
         <div class="w-1/3 p-4">
           <CounterCard class="w-full" :title="guestList.length + ' Guests Checked In'" :content="guestList.length + ' Overnight Stays'" />
+          <div>
+            <button @click = "checkoutAll">Checkout All Guests</button>
+          </div>
           <div class="bg-white rounded-lg p-4 border-2 border-bg-blue-900 m-4 w-full">
             <p>Key:</p>
             <br>
@@ -115,6 +118,14 @@
         .catch((error) => {
           console.error('Error fetching guests:', error)
         })
+        store.dispatch("guestModule/getCurrent")
+        .then((data) => {
+          this.guestList = data.guests;
+          console.log(this.guestList);
+        })
+        .catch((error) => {
+          console.error("Error fetching guests:", error);
+        });
     },
     methods: {
       addGuest() {
@@ -136,7 +147,18 @@
                     firstName : fullName[0],
                     lastName : fullName[1]
                 }
+                // Works to make a new guest, but isn't properly pushed to guest list?
+                // Need to refresh page to get object to appear in guest lists
+                // Can fix by having the makeNewGuest method return the new guest object but dunno how
+                store.dispatch("guestModule/makeNewGuest", { profile: newGuest })
+                .then(() => {
+                  console.log("New guest creating success")
+                })
+                .catch((error) => {
+                  console.error("Error creating new guest object:", error);
+                })
                 this.guestList.push(newGuest)
+                // this.checkin(newGuest)
                 this.searchQuery = ""
             }
         } else {
@@ -152,6 +174,47 @@
 
       checkin(guest){
         guest.isActive = true;
+        // if (this.isYesterday(guest.latestCheckInDate)){
+        //   guest.consecutiveDaysStayed += 1
+        // }
+        //guest.latestCheckInDate = new Date();
+        console.log("Profile before dispatch:", guest);
+        store.dispatch("guestModule/updateProfile", { id: guest.id, profile: guest})
+        .then(() => {
+          console.log("Profile updated successfully.");
+          //this.isEditing = false; // Exit edit mode after saving
+        })
+        .catch((error) => {
+          console.error("Error updating profile:", error);
+        });
+
+      },
+
+      checkoutAll(){
+        const guestsToCheckout = this.guestList
+        for (const guest of guestsToCheckout){
+          guest.isActive = false;
+          console.log("Profile before dispatch:", guest);
+          store.dispatch("guestModule/updateProfile", { id: guest.id, profile: guest})
+          .then(() => {
+            console.log("Profile updated successfully.");
+          })
+          .catch((error) => {
+            console.error("Error updating profile:", error);
+          });
+        }
+        this.guestList = [];
+      },
+
+      isYesterday(comparedDate) {
+        const today = new Date();
+
+        const yesterday = new Date(today);
+        yesterday.setDate(today.getDate() - 1);
+
+        const comparedDateFormatted = new Date(comparedDate.getFullYear(), comparedDate.getMonth(), comparedDate.getDate());
+
+        return comparedDateFormatted.getTime() === yesterday.getTime();
       },
 
       getBackgroundColorClass(guest){

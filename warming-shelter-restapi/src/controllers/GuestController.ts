@@ -68,7 +68,12 @@ class GuestController {
                     has_bunk_reservation: foundGuest.bunkReservation.hasRes,
                     bunk_reservation_number: foundGuest.bunkReservation.resNum,
                     locker: foundGuest.locker,
-                    laundry: foundGuest.laundry
+                    laundry: foundGuest.laundry,
+                    bx_warning: foundGuest.Bx.warning,
+                    bx_suspension: foundGuest.Bx.suspension,
+                    bx_noTrespass: foundGuest.Bx.noTrespass,
+                    bx_probation: foundGuest.Bx.probation,
+                    bx_bxNotes: foundGuest.Bx.bxNotes
                 }
             });
         } else {
@@ -89,13 +94,18 @@ class GuestController {
             consecutiveDaysStayed: guest.consecutiveDaysStayed,
             latestCheckInDate: guest.latestCheckInDate,
             hmis_valid: guest.HMIS.isValid,
-            hmus_date: guest.HMIS.enterDate,
+            hmis_date: guest.HMIS.enterDate,
             has_accommodation: guest.accommodation.hasAcc,
             desc_accommodation: guest.accommodation.accDesc,
             has_bunk_reservation: guest.bunkReservation.hasRes,
             bunk_reservation_number: guest.bunkReservation.resNum,
             locker: guest.locker,
-            laundry: guest.laundry
+            laundry: guest.laundry,
+            bx_warning: guest.Bx.warning,
+            bx_suspension: guest.Bx.suspension,
+            bx_noTrespass: guest.Bx.noTrespass,
+            bx_probation: guest.Bx.probation,
+            bx_bxNotes: guest.Bx.bxNotes
         }));
 
 
@@ -108,6 +118,103 @@ class GuestController {
             throw new Error('No guests found');
         }
     });
+
+    public static updateGuestById = asyncHandler(async (req: Request, res: Response) => {
+        const { id, profile } = req.body;
+
+        if (!id) {
+            res.status(400);
+            throw new Error('Please provide guest id');
+        }
+
+        const foundGuest = await Guest.findById(id);
+
+        if (!foundGuest) {
+            res.status(404);
+            throw new Error('Guest not found');
+        }
+
+        foundGuest.firstName = profile.firstName;
+        foundGuest.lastName = profile.lastName;
+        foundGuest.DOB = profile.dob;
+        foundGuest.isActive = profile.isActive;
+        foundGuest.consecutiveDaysStayed = profile.consecutiveDaysStayed;
+        foundGuest.latestCheckInDate = profile.latestCheckInDate;
+        foundGuest.HMIS.isValid = profile.hmis_isValid;
+        foundGuest.HMIS.enterDate = profile.hmis_date;
+        foundGuest.accommodation.hasAcc = profile.has_accommodation;
+        foundGuest.accommodation.accDesc = profile.desc_accommodation;
+        foundGuest.bunkReservation.hasRes = profile.has_bunk_reservation;
+        foundGuest.bunkReservation.resNum = profile.bunk_reservation_number;
+        foundGuest.locker = profile.locker;
+        foundGuest.laundry = profile.laundry;
+        foundGuest.Bx.warning = profile.bx_warning; 
+        foundGuest.Bx.suspension = profile.bx_suspension;
+        foundGuest.Bx.noTrespass = profile.bx_noTrespass;
+        foundGuest.Bx.probation = profile.bx_probation;
+        foundGuest.Bx.bxNotes = profile.bx_bxNotes
+
+        const updatedGuest = await foundGuest.save();
+
+        if (updatedGuest) {
+            res.status(200).json({
+                guest: {
+                    firstName: updatedGuest.firstName,
+                    lastName: updatedGuest.lastName,
+                    DOB: updatedGuest.DOB,
+                    has_accommodation: updatedGuest.accommodation.hasAcc,
+                    desc_accommodation: updatedGuest.accommodation.accDesc
+                }
+            });
+        } else {
+            res.status(500);
+            throw new Error('Guest update failed');
+        }
+    });
+
+    public static makeNewGuest = asyncHandler(async (req: Request, res: Response) => {
+        const { profile } = req.body;
+
+        const newGuest = await Guest.insertMany( {
+            firstName: profile.firstName,
+            lastName: profile.lastName,
+            dob: null,
+            isActive: true,
+            consecutiveDaysStayed: 1,
+            latestCheckInDate: new Date(),
+            HMIS: {
+                isValid: false,
+                enterDate: null
+            },
+            accommodation: {
+                hasAcc: false,
+                accDesc: null
+            },
+            bunkReservation: {
+                hasRes: false,
+                resNum: null
+            },
+            locker: null,
+            laundry: false,
+            Bx: {
+                warning: false,
+                suspension: false,
+                noTrespass: false,
+                probation: false,
+                bxNotes: null
+            }
+        })
+
+        if(newGuest) {
+            res.status(200).json({ 
+                value: "success"
+            })
+        } else {
+            res.status(500);
+            throw new Error('Guest update failed');
+        }
+    });
+
 }
 
 export default GuestController;

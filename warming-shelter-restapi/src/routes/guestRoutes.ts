@@ -16,4 +16,10 @@ guestRouter.get('/viewProfile/:id', GuestController.viewProfile);
 // Get All Current Guests Route
 guestRouter.get('/current', GuestController.getCurrentGuests);
 
+// Update Guest by ID Route
+guestRouter.put('/update', GuestController.updateGuestById);
+
+// Create new guest object
+guestRouter.post('/new', GuestController.makeNewGuest);
+
 export default guestRouter;

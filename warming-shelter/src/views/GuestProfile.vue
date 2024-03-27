@@ -4,22 +4,60 @@
         <br>
         <Wrapper>
           
-          <div>
+          <form @submit.prevent="saveProfile" v-if="isEditing">
+            
             <div class="flex items-center mb-4">
-              <div class="w-3/4">{{ profile.firstName }}</div>
+              <label for="firstName">First Name:</label>
+              <input id="firstName" v-model="profile.firstName" />
             </div>
-            <div class="flex items-center mb-4">
-              <div class="w-3/4">{{ profile.lastName }}</div>
-            </div>
-            <div class="flex items-center mb-4">
-              <div class="w-3/4">{{ formatDate(profile.dob) }}</div>
-            </div>
-            <div v-if="profile.has_accommodation" class="flex items-center mb-4">
-              <div class="w-3/4-green">Reasonable Accommodation</div>
-            </div>
-          </div>
-          
 
+            <div class="flex items-center mb-4">
+              <label for="lastName">Last Name:</label>
+              <input id="lastName" v-model="profile.lastName" />
+            </div>
+
+            <div class="flex items-center mb-4">
+              <label for="dob">Date of Birth:</label>
+              <input id="dob" v-model="profile.dob" />
+            </div>
+
+            <div class="flex items-center mb-4">
+              <label for="accommodation">Reasonable Accommodation:</label>
+              <input id="accommodation" type="checkbox" v-model="profile.has_accommodation" />
+            </div>
+
+            <div v-if="profile.has_accommodation">
+              <div class="flex items-center mb-4">
+                <label for="descAccommodation">Accommodation Description:</label>
+                <textarea id="descAccommodation" v-model="profile.desc_accommodation"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+              Save Profile
+            </button>
+
+          </form>
+
+          <div v-else @dblclick="toggleEditMode" class="hover:cursor-pointer">
+              <div class="flex items-center mb-4">
+                  <div class="w-3/4">{{ profile.firstName }}</div>
+              </div>
+              <div class="flex items-center mb-4">
+                  <div class="w-3/4">{{ profile.lastName }}</div>
+              </div>
+              <div class="flex items-center mb-4">
+                  <div class="w-3/4">{{ formatDate(profile.dob) }}</div>
+              </div>
+              <div v-if="profile.has_accommodation">
+                  <div class="flex items-center mb-4">
+                    <div class="w-3/4-green">Reasonable Accommodation</div>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <div class="w-3/4-green">{{ profile.desc_accommodation }}</div>
+                  </div>
+              </div>   
+          </div> 
         </Wrapper>
     </div>
 </template>
@@ -37,7 +75,8 @@ import store from "../store/store.js"
     },
     data() {
       return {
-        profile: []
+        profile: [],
+        isEditing: false
       };
     },
     created() {
@@ -57,7 +96,23 @@ import store from "../store/store.js"
         const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
         const date = new Date(dateString);
         return date.toLocaleDateString(undefined, options);
+      },
+      toggleEditMode() {
+        this.isEditing = !this.isEditing;
+      },
+      saveProfile() {
+        const guestId = this.$route.params.id;
+        console.log("Profile before dispatch:", this.profile);
+        store.dispatch("guestModule/updateProfile", { id: guestId, profile: this.profile })
+        .then(() => {
+          console.log("Profile updated successfully.");
+          this.isEditing = false; // Exit edit mode after saving
+        })
+        .catch((error) => {
+          console.error("Error updating profile:", error);
+        });
       }
+
     }   
   }
 

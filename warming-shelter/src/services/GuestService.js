@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/guests';
+const API_URL = 'http://esof423.cs.montana.edu:3000/api/guests';
 
 class GuestService {
     static guests = null;
@@ -44,6 +44,38 @@ class GuestService {
         return res.data;
     }
 
-}
+    async updateGuest(id, profile){
+        console.log("Profile in service", profile);
+        try {
+            const res = await axios.put(`${API_URL}/update`, { id: id, profile: profile });
+            
+            if (res.status === 200) {
+                localStorage.setItem('profile', JSON.stringify(res.data));
+                this.profile = res.data;
+            }
+    
+            return res.data;
+        } catch (error) {
+            console.error("Error updating profile:", error);
+            throw error; // Rethrow the error for further handling, or handle it appropriately.
+        }
+    }
 
+    async newGuest(profile){
+        try {
+            const res = await axios.post(`${API_URL}/new`, { profile: profile });
+
+            if (res.status == 200){
+                console.log("made new guest object successfully")
+                this.new = res.data
+            }
+
+            return res.data
+        } catch(error) {
+            console.error("Error creating new guest: ", error)
+            throw error
+        }
+    }
+
+}
 export default new GuestService();
