@@ -2,7 +2,6 @@
 
 <template>
   <div class="note-section">
-    <!-- title to be filled in later -->
     {{ NoteTitle }}
     <textarea
       v-model="note"
@@ -47,8 +46,6 @@ export default {
 };
 </script>
 <style>
-/* note sections side by side  */
-
 
 .note-section {
   width: 48%;
@@ -57,7 +54,7 @@ export default {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-/* make the notes section scrollable */
+
 .notes {
   max-height: 200px;
   overflow-y: auto;
