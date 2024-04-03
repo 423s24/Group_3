@@ -136,7 +136,7 @@
                 return fullName.includes(this.searchQuery.toLowerCase());
             });
             if(match.length == 1){
-                this.guestList.push(match[0])
+                //this.guestList.push(match[0])
                 this.checkin(match[0])
                 this.searchQuery = ""
             } else if(match.length > 1){
@@ -167,12 +167,16 @@
       },
       
       selectResult(result) {
-        this.guestList.push(result)
+        //this.guestList.push(result)
         this.checkin(result)
         this.searchQuery = ""
       },
 
       checkin(guest){
+        if(!(this.guestList.find(e => e.id === guest.id))){
+          this.guestList.push(guest)
+        }
+
         guest.isActive = true;
         // if (this.isYesterday(guest.latestCheckInDate)){
         //   guest.consecutiveDaysStayed += 1
