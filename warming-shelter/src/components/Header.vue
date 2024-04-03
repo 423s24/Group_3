@@ -44,3 +44,25 @@ export default {
     }
 }
 </script>
+<style>
+/* style to make mobile friendly, hamburger menu when its smaller than 1000px */
+/* add icon to see menu when smaller than 1000px */
+@media (max-width: 1000px) {
+    .flex {
+        display: flex;
+        flex-direction: column;
+    }
+    .flex ol {
+        display: none;
+    }
+    .flex ol.active {
+        display: block;
+    }
+    .flex img {
+        display: none;
+    }
+    .flex button {
+        display: block;
+    }
+}
+</style>
