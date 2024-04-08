@@ -15,7 +15,7 @@ export const bunkModule = {
         async updateBunk({ commit }, payload){
             const { number, name } = payload;
             try{
-                const res = await BunkService.updateGuest(number, name);
+                const res = await BunkService.updateBunk(number, name);
                 commit('updateSuccess', res);
                 return Promise.resolve(res);
             } catch(error){

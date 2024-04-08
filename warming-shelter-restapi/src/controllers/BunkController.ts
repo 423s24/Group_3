@@ -14,6 +14,8 @@ class BunkController {
 
         const foundBunk = await Bunk.findOne({bunkNumber: number});
 
+        console.log(foundBunk)
+
         if (!foundBunk) {
             res.status(404);
             throw new Error('Bunk not found');
@@ -31,7 +33,7 @@ class BunkController {
     })
 
     public static getAllBunks = asyncHandler(async (req: Request, res: Response) => {
-        const bunks = await Bunk.find({}).select('-number');
+        const bunks = await Bunk.find({});
 
         const allBunks = bunks.map(bunk => ({
             number: bunk.bunkNumber,

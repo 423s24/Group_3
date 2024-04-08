@@ -10,6 +10,8 @@ class BunkService {
 
     async updateBunk(number, name){
         try {
+            // console.log("number:" + number)
+            // console.log("name:" + name)
             const res = await axios.put(`${API_URL}/update`, { number: number, name: name });
             
             if (res.status === 200) {

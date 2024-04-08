@@ -27,7 +27,7 @@
                         <td class="px-3">{{ guest.locker }}</td>
                         <td class="px-3">
                           <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
-                            <button class="bg-blue-900 text-white rounded px-3 py-2">View Profile</button>
+                            <button class="bg-blue-900 hover:bg-gray-500 text-white rounded px-3 py-2">View Profile</button>
                           </router-link>
                         </td>
                     </tr>

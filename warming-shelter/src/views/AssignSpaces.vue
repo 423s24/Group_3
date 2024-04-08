@@ -3,6 +3,7 @@
         <Header />
         <br>
         <Wrapper>
+          <button class="checkout-btn" @click="checkoutAll">Clear All</button>
           <div class="table-container">
             <div class="float-left">
               <p class="text-2xl text-bg-blue-900"> {{ reservations.length }} Reservations</p>
@@ -25,7 +26,7 @@
                           <td class="px-3">{{ guest.firstName }} {{ guest.lastName }}</td>
                           <td class="px-3">
                             <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
-                              <button class="bg-blue-900 text-white rounded px-3 py-2">View Profile</button>
+                              <button class="bg-blue-900 hover:bg-gray-500 text-white rounded px-3 py-2">View Profile</button>
                             </router-link>
                           </td>
                       </tr>
@@ -45,9 +46,11 @@
                 </thead>
                 <tbody class="rounded">
                   <!-- Loop for observation slots -->
-                  <tr v-for="slot in 18" :key="slot">
-                    <td class="px-3">{{ Math.ceil(slot / 2) }}{{ String.fromCharCode(96 + (slot % 2 === 0 ? 2 : 1)) }}</td>
-                    <td class="px-3"><input type="text" class="border-2 border-gray-500 rounded px-3 py-1 w-full"></td>
+                  <tr v-for="bunk in filteredBunks('observation')" :key="bunk.number">
+                    <td class="px-3">{{ bunk.number }}</td>
+                    <td class="px-3">
+                      <input type="text" v-model="bunk.name" @input="updateBunk(bunk.number, bunk.name)" class="border-2 border-gray-500 rounded px-3 py-1 w-full">
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -65,9 +68,11 @@
                 </thead>
                 <tbody class="rounded">
                   <!-- Loop for women's slots -->
-                  <tr v-for="slot in 18" :key="slot">
-                    <td class="px-3">{{ Math.ceil(slot / 2) + 9 }}{{ String.fromCharCode(96 + (slot % 2 === 0 ? 2 : 1)) }}</td>
-                    <td class="px-3"><input type="text" class="border-2 border-gray-500 rounded px-3 py-1 w-full"></td>
+                  <tr v-for="bunk in filteredBunks('women')" :key="bunk.number">
+                    <td class="px-3">{{ bunk.number }}</td>
+                    <td class="px-3">
+                      <input type="text" v-model="bunk.name" @input="updateBunk(bunk.number, bunk.name)" class="border-2 border-gray-500 rounded px-3 py-1 w-full">
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -84,17 +89,18 @@
                   </tr>
                 </thead>
                 <tbody class="rounded">
-                  <!-- Loop for men's slots -->
-                  <tr v-for="slot in 76" :key="slot">
-                    <td class="px-3">{{ Math.ceil(slot / 2) + 18 }}{{ String.fromCharCode(96 + (slot % 2 === 0 ? 2 : 1)) }}</td>
-                    <td class="px-3"><input type="text" class="border-2 border-gray-500 rounded px-3 py-1 w-full"></td>
+                  <!-- Loop for observation slots -->
+                  <tr v-for="bunk in filteredBunks('men')" :key="bunk.number">
+                    <td class="px-3">{{ bunk.number }}</td>
+                    <td class="px-3">
+                      <input type="text" v-model="bunk.name" @input="updateBunk(bunk.number, bunk.name)" class="border-2 border-gray-500 rounded px-3 py-1 w-full">
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div class="clearfix"></div> <!-- Clear the float -->
           </div>
-          {{ bunks }}
         </Wrapper>
     </div>
 </template>
@@ -155,6 +161,35 @@ import store from "../store/store.js"
         const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
         const date = new Date(dateString);
         return date.toLocaleDateString(undefined, options);
+      },
+      filteredBunks(category) {
+        return this.bunks.filter(bunk => bunk[category]);
+      },
+      updateBunk(number, name) {
+        console.log("number:" + number)
+        console.log("name:" + name)
+        // Call the update method from your store with bunk number and new name
+        store.dispatch("bunkModule/updateBunk", { number, name })
+          .then(() => {
+            console.log("Bunk updated successfully!");
+          })
+          .catch((error) => {
+            console.error("Error updating bunk:", error);
+          });
+      },
+      checkoutAll(){
+        const bunksToClear = this.bunks
+        for(const bunk of bunksToClear){
+          let clearName = null
+          let number = bunk.number
+          store.dispatch("bunkModule/updateBunk", { number, clearName })
+          .then(() => {
+            console.log("Bunk updated successfully!");
+          })
+          .catch((error) => {
+            console.error("Error updating bunk:", error);
+          });
+        }
       }
     }   
   }
@@ -171,4 +206,25 @@ import store from "../store/store.js"
     box-sizing: border-box;
     padding: 0 10px;
   }
+
+  .checkout-btn {
+    position: fixed;
+    top: 8%;
+    right: 1%;
+    background-color: rgba(30,58,138,255);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .checkout-btn:hover {
+    background-color: grey;
+  }
+
 </style>

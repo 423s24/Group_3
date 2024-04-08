@@ -67,8 +67,8 @@ async function seedDB() {
         // For Observation
         for(let i = 0; i < 18; i++) {
             const bunk = {
-                number: (Math.floor(i / 2) + 1) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
-                name: null,
+                bunkNumber: (Math.floor(i / 2) + 1) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
+                bunkOccupant: null,
                 isMen: false,
                 isWomen: false,
                 isObservation: true
@@ -79,8 +79,8 @@ async function seedDB() {
         // For Women
         for(let i = 0; i < 18; i++) {
             const bunk = {
-                number: (Math.floor(i / 2) + 10) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
-                name: null,
+                bunkNumber: (Math.floor(i / 2) + 10) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
+                bunkOccupant: null,
                 isMen: false,
                 isWomen: true,
                 isObservation: false
@@ -91,8 +91,8 @@ async function seedDB() {
         // For Men
         for(let i = 0; i < 76; i++) {
             const bunk = {
-                number: (Math.floor(i / 2) + 19) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
-                name: null,
+                bunkNumber: (Math.floor(i / 2) + 19) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
+                bunkOccupant: null,
                 isMen: true,
                 isWomen: false,
                 isObservation: false
