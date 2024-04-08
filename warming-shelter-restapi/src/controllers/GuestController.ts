@@ -216,7 +216,7 @@ class GuestController {
     });
 
     public static getBunkReservations = asyncHandler(async (req: Request, res: Response) => {
-        const guests = await Guest.find({ "accommodation.hasAcc" : true})
+        const guests = await Guest.find({ "bunkReservation.hasRes" : true})
 
         const reservationGuests = guests.map(guest => ({
             id: guest._id,

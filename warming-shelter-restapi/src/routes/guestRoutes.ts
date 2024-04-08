@@ -23,6 +23,6 @@ guestRouter.put('/update', GuestController.updateGuestById);
 guestRouter.post('/new', GuestController.makeNewGuest);
 
 // Get all guests who have bunk reservations
-guestRouter.post('/reservation', GuestController.makeNewGuest);
+guestRouter.get('/reservation', GuestController.getBunkReservations);
 
 export default guestRouter;
