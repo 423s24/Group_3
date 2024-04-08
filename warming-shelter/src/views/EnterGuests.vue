@@ -7,7 +7,7 @@
         <div class="w-2/3 p-4 m-4">
             <div class="w-full m-4 p-4">
                 <form class="w-full p-0 m-0" @submit.prevent="addGuest">
-                    <label for="guestSearch">Search Guest:</label>
+                    <label for="guestSearch">Enter Guest:</label>
                     <input
                         class="w-full"
                         type="text"
