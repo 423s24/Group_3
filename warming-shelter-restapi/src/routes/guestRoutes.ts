@@ -22,4 +22,7 @@ guestRouter.put('/update', GuestController.updateGuestById);
 // Create new guest object
 guestRouter.post('/new', GuestController.makeNewGuest);
 
+// Get all guests who have bunk reservations
+guestRouter.get('/reservation', GuestController.getBunkReservations);
+
 export default guestRouter;

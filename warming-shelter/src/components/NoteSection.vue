@@ -81,7 +81,7 @@ export default {
 .note-item {
   background-color: #FAFFBB; 
   margin-bottom: 5px; 
-  padding: 5px; 
+  padding: 30px; 
   border: solid 1px #00796b; 
   position: relative; 
 }
