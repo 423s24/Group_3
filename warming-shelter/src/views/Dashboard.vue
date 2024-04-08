@@ -18,9 +18,6 @@
     </Wrapper>
   </div>
 </template>
-
-
-  
   <script>
   import Header from '../components/Header.vue'
   import Wrapper from '../components/Wrapper.vue'

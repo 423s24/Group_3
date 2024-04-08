@@ -1,22 +1,23 @@
-<!-- creates a section on the dashboard where the user can add notes, takes up 48% of the space  -->
-
 <template>
   <div class="note-section">
     {{ NoteTitle }}
+    <!-- make text area background color #FAFFBB -->
+
     <textarea
       v-model="note"
       placeholder="Add a note..."
       @keyup.enter="addNote"
+      class="note-textarea"
     ></textarea>
-    <button @click="addNote" class="bg-blue-400">Add</button>
+    <button @click="addNote" class="bg-hrdc-green">Add</button>
     <div class="notes">
-      <div v-for="(note, index) in notes" :key="index">
+      <div v-for="(note, index) in notes" :key="index" class="note-item">
         <p>{{ note }}</p>
-        <button @click="deleteNote(index)">Delete</button>
+        <button @click="deleteNote(index)" class="bg-hrdc-blue">Delete</button>
       </div>
     </div>
   </div>
-  </template>
+</template>
 
 <script>
 export default {
@@ -45,18 +46,33 @@ export default {
   },
 };
 </script>
-<style>
 
+<style scoped>
 .note-section {
-  width: 48%;
-  margin: 0 1%;
+  width: 49%; 
+  margin: 0 0.5%; 
   padding: 1%;
-  border: 1px solid #ccc;
+  /* set border color to hrdc-teal */
+  border: 2px solid #00796b;
   border-radius: 5px;
+  display: inline-block; 
+  box-sizing: border-box; 
 }
 
 .notes {
   max-height: 200px;
   overflow-y: auto;
+}
+
+.note-textarea {
+  background-color: #FAFFBB; 
+  border: solid 1px #00796b; 
+}
+
+.note-item {
+  background-color: #FAFFBB; 
+  margin-bottom: 5px; 
+  padding: 5px; 
+  border: solid 1px #00796b; 
 }
 </style>
