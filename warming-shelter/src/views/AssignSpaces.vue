@@ -94,6 +94,7 @@
             </div>
             <div class="clearfix"></div> <!-- Clear the float -->
           </div>
+          {{ bunks }}
         </Wrapper>
     </div>
 </template>
@@ -112,10 +113,12 @@ import store from "../store/store.js"
     data() {
       return {
         guests: [],
-        reservations: []
+        reservations: [],
+        bunks: []
       };
     },
     async created(){
+      //Get current guests
       store.dispatch("guestModule/getCurrent")
       .then((data) => {
         this.guests = data.guests;
@@ -125,12 +128,23 @@ import store from "../store/store.js"
         console.error("Error fetching guests:", error);
       });
 
+      //Get guests with reservations
       store.dispatch("guestModule/getReservation")
       .then((data) => {
         this.reservations = data.guests;
         // Sort reservations by bunk_reservation_number
         this.reservations.sort((a, b) => a.bunk_reservation_number - b.bunk_reservation_number);
         console.log(this.reservations);
+      })
+      .catch((error) => {
+        console.error("Error fetching guests:", error);
+      });
+
+      //Get all bunks
+      store.dispatch("bunkModule/getAll")
+      .then((data) => {
+        this.bunks = data.bunks;
+        console.log(this.bunks);
       })
       .catch((error) => {
         console.error("Error fetching guests:", error);
