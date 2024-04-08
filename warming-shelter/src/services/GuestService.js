@@ -77,5 +77,14 @@ class GuestService {
         }
     }
 
+    async getReservation(){
+        const res = await axios.get(API_URL + '/reservation');
+        if (res.status === 200) {
+            localStorage.setItem('guests', JSON.stringify(res.data));
+            this.guests = res.data;
+        }
+        return res.data;
+    }
+
 }
 export default new GuestService();

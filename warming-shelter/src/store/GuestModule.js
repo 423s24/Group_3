@@ -63,6 +63,16 @@ export const guestModule = {
                 commit('newFailure')
                 return Promise.reject(error);
             }
+        },
+        async getReservation({ commit }){
+            try{
+                const guests = await GuestService.getReservation();
+                commit('getReservationSuccess', guests);
+                return Promise.resolve(guests);
+            } catch(error){
+                commit('getReservationFailure');
+                return Promise.reject(error);
+            }
         }
     },
     mutations: {
@@ -97,6 +107,14 @@ export const guestModule = {
         newFailure(state){
             state.profile = null;
             state.errorMessage = 'Unable to make new guest object';
+        },
+        getReservationSuccess(state, res){
+            state.guests = res;
+            state.errorMessage = ''
+        },
+        getReservationFailure(state){
+            state.guests = null;
+            state.errorMessage = 'Unable to retrieve bunk reservations'
         }
     }
 }
