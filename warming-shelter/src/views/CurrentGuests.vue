@@ -5,7 +5,7 @@
         <Wrapper>
             <p class="text-2xl text-bg-blue-900"> {{ guests.length }} Current Guests </p>
             <table class="w-full border-2 border-bg-blue-900">
-                <thead class="bg-blue-900">
+                <thead class="bg-hrdc-blue">
                     <tr>
                         <th class="text-left p-3 text-white">First Name<i class="bi-alarm"></i></th>
                         <th class="text-left p-3 text-white">Last Name</th>
