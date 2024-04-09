@@ -78,6 +78,10 @@ export default {
       } catch (error) {
         console.error('Error fetching guest data:', error);
       }
+    },
+    formatContent(content) {
+      // Split the content string by '$' and join with '<br>' for line breaks
+      return content.split('$').join('<br>');
     }
   }
 }
