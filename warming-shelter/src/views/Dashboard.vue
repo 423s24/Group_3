@@ -14,7 +14,10 @@
 
         <NoteSection NoteTitle="Guest Notes"/>
         <NoteSection NoteTitle="Nightly Celebrations"/>
-
+        <br>
+        <br>
+        <NoteSection NoteTitle="Guest Notes"/>
+        <NoteSection NoteTitle="Nightly Celebrations"/>
     </Wrapper>
   </div>
 </template>

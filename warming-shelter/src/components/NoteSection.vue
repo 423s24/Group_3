@@ -65,6 +65,7 @@ export default {
   border-radius: 5px;
   display: inline-block; 
   box-sizing: border-box; 
+  vertical-align: top;
 }
 
 .notes {
@@ -76,6 +77,7 @@ export default {
   background-color: #FAFFBB; 
   border: solid 1px #00796b; 
   border-radius: 5px;
+  vertical-align: top;
 }
 
 .note-item {
