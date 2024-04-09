@@ -47,7 +47,7 @@
         <div class="w-1/3 p-4">
           <CounterCard class="w-full" :title="guestList.length + ' Guests Checked In'" :content="guestList.length + ' Overnight Stays'" />
           <div>
-            <button @click = "checkoutAll">Checkout All Guests</button>
+            <button @click = "checkoutAll" class="bg-hrdc-green">Checkout All Guests</button>
           </div>
           <div class="bg-white rounded-lg p-4 border-2 border-bg-blue-900 m-4 w-full">
             <p>Key:</p>
