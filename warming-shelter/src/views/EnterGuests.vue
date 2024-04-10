@@ -152,7 +152,8 @@
                 const fullName = this.searchQuery.split(" ")
                 const newGuest = {
                     firstName : fullName[0],
-                    lastName : fullName[1]
+                    lastName : fullName[1],
+                    id: Date.now()
                 }
                 // Works to make a new guest, but isn't properly pushed to guest list?
                 // Need to refresh page to get object to appear in guest lists
@@ -165,7 +166,7 @@
                   console.error("Error creating new guest object:", error);
                 })
                 this.guestList.push(newGuest)
-                // this.checkin(newGuest)
+                 //this.checkin(newGuest)
                 this.searchQuery = ""
             }
         } else {
