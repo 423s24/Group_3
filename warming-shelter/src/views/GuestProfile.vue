@@ -4,6 +4,7 @@
         <br>
         <Wrapper>
       <div class="max-w-lg mx-auto">
+        <!-- EDITABLE FORM -->
         <form @submit.prevent="saveProfile" v-if="isEditing" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div class="mb-4">
             <label for="firstName" class="block text-gray-700 font-bold mb-2">First Name:</label>
@@ -41,6 +42,7 @@
 
           </form>
 
+          <!-- PROFILE FOR DISPLAY -->
           <div v-else @dblclick="toggleEditMode" class="hover:cursor-pointer">
               <div class="flex items-center mb-4">
                   <div class="w-3/4">{{ profile.firstName }}</div>
