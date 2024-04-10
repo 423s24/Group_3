@@ -201,7 +201,8 @@ import store from "../store/store.js"
           let number = bunk.number
           store.dispatch("bunkModule/updateBunk", { number, clearName })
           .then(() => {
-            console.log("Bunk updated successfully!");
+            window.location.reload();
+            console.log("Bunks cleared successfully!");
           })
           .catch((error) => {
             console.error("Error updating bunk:", error);
