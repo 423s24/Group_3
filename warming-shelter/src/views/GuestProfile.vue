@@ -60,6 +60,7 @@
                   </div>
               </div>   
           </div> 
+          </div>
         </Wrapper>
     </div>
 </template>
