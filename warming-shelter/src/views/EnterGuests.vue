@@ -152,6 +152,7 @@
                 // Can fix by having the makeNewGuest method return the new guest object but dunno how
                 store.dispatch("guestModule/makeNewGuest", { profile: newGuest })
                 .then(() => {
+                  window.location.reload();
                   console.log("New guest creating success")
                 })
                 .catch((error) => {

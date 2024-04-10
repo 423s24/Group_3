@@ -208,7 +208,7 @@ import store from "../store/store.js"
   }
 
   .checkout-btn {
-    position: fixed;
+    position: absolute;
     top: 8%;
     right: 1%;
     background-color: rgba(30,58,138,255);

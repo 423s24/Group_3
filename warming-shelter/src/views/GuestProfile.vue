@@ -26,13 +26,26 @@
               <input id="accommodation" type="checkbox" v-model="profile.has_accommodation" />
             </div>
 
-            <div v-if="profile.has_accommodation">
-              <div class="flex items-center mb-4">
-                <label for="descAccommodation">Accommodation Description:</label>
-                <textarea id="descAccommodation" v-model="profile.desc_accommodation"></textarea>
-              </div>
+            <div class="flex items-center mb-4">
+              <label for="descAccommodation">Accommodation Description:</label>
+              <textarea id="descAccommodation" v-model="profile.desc_accommodation"></textarea>
             </div>
 
+            <div class="flex items-center mb-4">
+              <label for="reservation">Bunk Reservation:</label>
+              <input id="reservation" type="checkbox" v-model="profile.has_bunk_reservation" />
+            </div>
+
+            <div class="flex items-center mb-4">
+              <label for="reservationNum">Bunk Number:</label>
+              <textarea id="reservationNum" v-model="profile.bunk_reservation_number"></textarea>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <label for="active">Currently Checked In:</label>
+              <input id="active" type="checkbox" v-model="profile.isActive" />
+            </div>
+            
             <button type="submit" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
               Save Profile
             </button>
@@ -43,20 +56,44 @@
               <div class="flex items-center mb-4">
                   <div class="w-3/4">{{ profile.firstName }}</div>
               </div>
+
               <div class="flex items-center mb-4">
                   <div class="w-3/4">{{ profile.lastName }}</div>
               </div>
+
               <div class="flex items-center mb-4">
                   <div class="w-3/4">{{ formatDate(profile.dob) }}</div>
               </div>
+
               <div v-if="profile.has_accommodation">
                   <div class="flex items-center mb-4">
-                    <div class="w-3/4-green">Reasonable Accommodation</div>
+                    <div class="w-3/4-green">Reasonable Accommodation:</div>
                   </div>
                   <div class="flex items-center mb-4">
                     <div class="w-3/4-green">{{ profile.desc_accommodation }}</div>
                   </div>
-              </div>   
+              </div>
+
+              <div v-if="profile.has_bunk_reservation">
+                  <div class="flex items-center mb-4">
+                    <div class="w-3/4-green">Bunk Reservation:</div>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <div class="w-3/4-green">{{ profile.bunk_reservation_number }}</div>
+                  </div>
+              </div>
+
+              <div v-if="profile.isActive">
+                <div class="flex items-center mb-4">
+                  <div class="w-3/4-green">Checked in</div>
+                </div>
+              </div>
+              <div v-else>
+                <div class="flex items-center mb-4">
+                  <div class="w-3/4-green">Checked out</div>
+                </div>
+              </div>
+
           </div> 
         </Wrapper>
     </div>
