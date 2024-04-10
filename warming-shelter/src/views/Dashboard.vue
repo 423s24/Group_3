@@ -5,8 +5,7 @@
     <Wrapper>
       <h1 class="text-center">Welcome, {{ firstName }} {{ lastName }}!</h1>
       <div class="flex">
-        <CounterCard :title="`${guestData.guestsCheckedIn} Guests Checked In`" 
-                     :content="`${guestData.overnightStays} Overnight Stays ${guestData.servicesOnly} Services Only`"/>
+        <CounterCard :title="guestList.length + ' Guests Checked In'" :content="guestList.length + ' Overnight Stays'"/>
         <CounterCard :title="`${guestData.bunksAssigned} Bunks Assigned`" 
                      :content="`${guestData.topBunksAvailable} Top Bunks Available ${guestData.bottomBunksAvailable} Bottom Bunks Available`"/>
         <CounterCard :title="`${guestData.lockersAssigned} Lockers Assigned`" 
@@ -51,23 +50,33 @@ export default {
         lockersAssigned: 0,
         dayLockersAvailable: 0,
         storageLockersAvailable: 0
-      }
+      },
+      guestList: []
+
     }
   },
   async created() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    this.firstName = user.user.firstName;
-    this.lastName = user.user.lastName;
+    store.dispatch("guestModule/getCurrent")
+        .then((data) => {
+          this.guestList = data.guests;
+          console.log(this.guestList);
+        })
+        .catch((error) => {
+          console.error("Error fetching guests:", error);
+        });
+    // const user = JSON.parse(localStorage.getItem('user'));
+    // this.firstName = user.user.firstName;
+    // this.lastName = user.user.lastName;
 
-    // Fetch initial data from MongoDB
-    this.fetchGuestData();
+    // // Fetch initial data from MongoDB
+    // this.fetchGuestData();
 
-    // Subscribe to real-time updates
-    store.subscribe((mutation, state) => {
-      if (mutation.type === 'updateGuestData') {
-        this.guestData = state.guestData;
-      }
-    });
+    // // Subscribe to real-time updates
+    // store.subscribe((mutation, state) => {
+    //   if (mutation.type === 'updateGuestData') {
+    //     this.guestData = state.guestData;
+    //   }
+    // });
   },
   methods: {
     async fetchGuestData() {
