@@ -2,8 +2,8 @@
     <div>
       <Header />
       <br />
-  
-      <div class="flex flex-row justify-center">
+      <Wrapper>
+        <div class="flex flex-row justify-center">
         <div class="w-2/3 p-4 m-4">
             <div class="w-full m-4 p-4">
                 <form class="w-full p-0 m-0" @submit.prevent="addGuest">
@@ -30,63 +30,70 @@
                     </div>   
             </div>
   
-          <div class="bg-white rounded-lg p-4 border-2 border-bg-blue-900 m-4 w-full">
-            <h2>Guest List:</h2>
-            <ul class="flex flex-wrap">
-              <li v-for="guest in guestList" :key="guest.id">
-                <!-- <div :class="getBackgroundColorClass(guest)" class="inline-block p-4 m-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded cursor-pointer"> -->
+            <div class="bg-white rounded-lg p-4 border-2 border-hrdc-blue m-4 w-full">
+              <h3 class="text-hrdc-blue text-lg font-semibold mb-2">Guest List:</h3>
+              <ul class="grid grid-cols-2 gap-4">
+                <li v-for="guest in guestList" :key="guest.id">
                   <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
-                    <div :style="{ backgroundImage: getBackgroundColorClass(guest)}" class="inline-block p-4 m-4 border-black border-2 font-bold rounded cursor-pointer transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:duration-300 ...">
+                    <div :style="{ backgroundImage: getBackgroundColorClass(guest)}" class="p-4 border-2 border-hrdc-blue font-bold text-hrdc-blue text-md rounded cursor-pointer transition-transform transform hover:scale-105 hover:duration-300 text-center">
                       {{ guest.firstName + " " + guest.lastName}}
                     </div>
                   </router-link>
-              </li>
-            </ul>
+                </li>
+              </ul>
+            </div>
+
+        </div>
+        <div class="w-1/3 p-4 flex flex-col justify-start">
+          <div class="mb-4">
+            <button @click="checkoutAll" class="bg-hrdc-green text-white py-2 px-4 rounded-md hover:bg-hrdc-teal">Checkout All Guests</button>
+          </div>
+          <div class="mb-4">
+            <CounterCard :title="guestList.length + ' Guests Checked In'" :content="guestList.length + ' Overnight Stays'" class="w-full" />
+          </div>
+
+          <div class="bg-white rounded-lg p-4 border-2 border-bg-blue-900 w-full">
+            <p class="font-semibold mb-4">Key:</p>
+            <div class="flex items-center mb-2">
+              <div class="border-black border-2 w-10 h-10 m-3"></div>
+              <div>No Discrepancies</div>
+            </div>
+            <div class="flex items-center mb-2">
+              <div class="bg-purple-400 bg-opacity-50 border-black border-2 w-10 h-10 m-3"></div>
+              <div>Has Recent Notes</div>
+            </div>
+            <div class="flex items-center mb-2">
+              <div class="bg-yellow-300 bg-opacity-50 border-black border-2 w-10 h-10 m-3"></div>
+              <div>Need Info Added to HMIS</div>
+            </div>
+            <div class="flex items-center mb-2">
+              <div class="bg-lime-900 bg-opacity-50 border-black border-2 w-10 h-10 m-3"></div>
+              <div>Services Only</div>
+            </div>
+            <div class="flex items-center mb-2">
+              <div class="bg-red-500 bg-opacity-50 border-black border-2 w-10 h-10 m-3"></div>
+              <div>No Trespass</div>
+            </div>
           </div>
         </div>
-        <div class="w-1/3 p-4">
-          <CounterCard class="w-full" :title="guestList.length + ' Guests Checked In'" :content="guestList.length + ' Overnight Stays'" />
-          <div>
-            <button @click = "checkoutAll">Checkout All Guests</button>
-          </div>
-          <div class="bg-white rounded-lg p-4 border-2 border-bg-blue-900 m-4 w-full">
-            <p>Key:</p>
-            <br>
-            <div class="flex flex-row items-center">
-              <div class=" border-black border-4 w-10 h-10 m-3"></div>
-              <div class="">No Discrepancies</div>
-            </div>
-            <div class="flex flex-row items-center">
-              <div class="bg-purple-400 border-black border-4 w-10 h-10 m-3"></div>
-              <div class="">Has Recent Notes</div>
-            </div>
-            <div class="flex flex-row items-center">
-              <div class=" bg-yellow-300 border-black border-4 w-10 h-10 m-3"></div>
-              <div class="">Need Info Added to HMIS</div>
-            </div>
-            <div class="flex flex-row items-center">
-              <div class="bg-lime-900 border-black border-4 w-10 h-10 m-3"></div>
-              <div class="">Services Only</div>
-            </div>
-            <div class="flex flex-row items-center">
-              <div class="bg-red-500 border-black border-4 w-10 h-10 m-3"></div>
-              <div class="">No Trespass</div>
-            </div>
-          </div>
-        </div>
+
+        
       </div>
+    </Wrapper>
     </div>
   </template>
   
   <script>
   import Header from '../components/Header.vue'
   import CounterCard from '../components/CounterCard.vue'
+  import Wrapper from '../components/Wrapper.vue'
   import store from "../store/store.js"
   
   export default {
     name: 'EnterGuests',
     components: {
       Header,
+      Wrapper,
       CounterCard
     },
     data() {
@@ -145,7 +152,8 @@
                 const fullName = this.searchQuery.split(" ")
                 const newGuest = {
                     firstName : fullName[0],
-                    lastName : fullName[1]
+                    lastName : fullName[1],
+                    id: Date.now()
                 }
                 // Works to make a new guest, but isn't properly pushed to guest list?
                 // Need to refresh page to get object to appear in guest lists
@@ -159,7 +167,7 @@
                   console.error("Error creating new guest object:", error);
                 })
                 this.guestList.push(newGuest)
-                // this.checkin(newGuest)
+                 //this.checkin(newGuest)
                 this.searchQuery = ""
             }
         } else {
@@ -224,13 +232,13 @@
 
       getBackgroundColorClass(guest){
         if((guest.bx_noTrespass === true && guest.hmis_valid === false)){
-          return 'linear-gradient(to right, rgb(239 68 68), rgb(239 68 68) 50%, rgb(253 224 71), rgb(253 224 71) 50%)'
+          return 'linear-gradient(to right, rgb(239, 68, 68, 0.5), rgb(239, 68, 68, 0.5) 50%, rgb(253, 224, 71, 0.5), rgb(253, 224, 71, 0.5) 50%)'
         }
         else if((guest.bx_noTrespass === true)){
-          return 'linear-gradient(90deg, rgb(239 68 68), rgb(239 68 68))'
+          return 'linear-gradient(90deg, rgb(239, 68, 68, 0.5), rgb(239, 68, 68, 0.5)'
         }
         else if(guest.hmis_valid === false){
-          return 'linear-gradient(90deg, rgb(253 224 71), rgb(253 224 71))'
+          return 'linear-gradient(90deg, rgb(253, 224, 71, 0.5), rgb(253, 224, 71, 0.5 ))'
         }
         // else if(guest.laundry)
         else{
