@@ -163,7 +163,24 @@ import store from "../store/store.js"
         return date.toLocaleDateString(undefined, options);
       },
       filteredBunks(category) {
-        return this.bunks.filter(bunk => bunk[category]);
+        return this.bunks
+        .filter(bunk => bunk[category])
+        .sort((a, b) => {
+          const numA = parseInt(a.number);
+            const numB = parseInt(b.number);
+            
+            // Extract letters
+            const letterA = a.number.replace(/\d+/g, '');
+            const letterB = b.number.replace(/\d+/g, '');
+            
+            // Compare numbers first
+            if (numA !== numB) {
+                return numA - numB;
+            } else {
+                // If numbers are equal, compare letters
+                return letterA.localeCompare(letterB);
+            }
+        });
       },
       updateBunk(number, name) {
         console.log("number:" + number)
