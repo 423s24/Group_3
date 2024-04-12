@@ -6,16 +6,23 @@
         <div class="flex flex-row justify-center">
         <div class="w-2/3 p-4 m-4">
             <div class="w-full m-4 p-4">
-                <form class="w-full p-0 m-0" @submit.prevent="addGuest">
-                    <label for="guestSearch">Enter Guest:</label>
-                    <input
-                        class="w-full"
-                        type="text"
-                        id="guestSearch"
-                        v-model="searchQuery"
-                    />
-                    <button class="bg-hrdc-blue" type="submit">Submit</button>
-                </form>
+              <form class="flex items-center justify-between w-full p-0 m-0" @submit.prevent="addGuest">
+    <label for="guestSearch" class="mr-2">Enter Guest:</label>
+    <div class="flex-grow">
+        <input
+            class="w-full px-2 py-1 border rounded focus:outline-none focus:border-blue-500"
+            type="text"
+            id="guestSearch"
+            v-model="searchQuery"
+            placeholder="Search for a guest..."
+        />
+    </div>
+    <button class="bg-hrdc-blue text-white px-4 py-2 rounded" type="submit">Submit</button>
+</form>
+
+
+
+
 
 
                     <div v-if="searchPredict.length > 0" class="search-results">
