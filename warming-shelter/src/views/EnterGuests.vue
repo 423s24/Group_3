@@ -14,6 +14,7 @@
                         id="guestSearch"
                         v-model="searchQuery"
                     />
+                    <button class="bg-hrdc-blue" type="submit">Submit</button>
                 </form>
 
 
