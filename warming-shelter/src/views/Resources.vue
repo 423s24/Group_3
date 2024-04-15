@@ -13,6 +13,7 @@
         <h4>* Code</h4>
         <a href="https://github.com/423s24/Group_3/tree/main/warming-shelter" class="button">Frontend</a> <br>
         <a href="https://github.com/423s24/Group_3/tree/main/warming-shelter-restapi" class="button">Backend</a> <br>
+        <a href="https://github.com/423s24/Group_3/issues" class="button">Report a bug!</a> <br>
         
         <h4>* Documentation</h4>
         <a href="https://github.com/423s24/Group_3/blob/main/documentation/user-documentation.md" class="button">User Documentation</a> <br>

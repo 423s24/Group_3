@@ -10,6 +10,7 @@ import errorHandler from "./middleware/ErrorHandler";
 
 import userRouter from "./routes/userRoutes";
 import guestRouter from "./routes/guestRoutes";
+import bunkRouter from "./routes/bunkRoutes";
 
 /**
  * The main class of the server application.
@@ -81,6 +82,7 @@ class Server {
         // Use routes in application
         this.app.use("/api/users", userRouter);
         this.app.use("/api/guests", guestRouter);
+        this.app.use("/api/bunks", bunkRouter);
     }
 
     private generateDocsRoutes() {

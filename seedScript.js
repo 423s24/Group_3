@@ -15,11 +15,11 @@ async function seedDB() {
         await client.connect();
         console.log("Connected correctly to server");
 
-        const collection = client.db("test").collection("guests");
+        const guestCollection = client.db("test").collection("guests");
 
         // The drop() command destroys all data from a collection.
         // Make sure you run it against proper database and collection.
-        await collection.deleteMany({});
+        await guestCollection.deleteMany({});
 
         // make a bunch of time series data
         let guestData = [];
@@ -56,9 +56,54 @@ async function seedDB() {
             }
             guestData.push(guest);
         }
-        await collection.insertMany(guestData);
+        await guestCollection.insertMany(guestData);
 
-        console.log("Database seeded! :)");
+        console.log("Guest database seeded! :)");
+
+        const bunkCollection = client.db("test").collection("bunks");
+        await bunkCollection.deleteMany({});
+        let bunkData = [];
+
+        // For Observation
+        for(let i = 0; i < 18; i++) {
+            const bunk = {
+                bunkNumber: (Math.floor(i / 2) + 1) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
+                bunkOccupant: null,
+                isMen: false,
+                isWomen: false,
+                isObservation: true
+            };
+            bunkData.push(bunk);
+        }
+
+        // For Women
+        for(let i = 0; i < 18; i++) {
+            const bunk = {
+                bunkNumber: (Math.floor(i / 2) + 10) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
+                bunkOccupant: null,
+                isMen: false,
+                isWomen: true,
+                isObservation: false
+            };
+            bunkData.push(bunk);
+        }
+
+        // For Men
+        for(let i = 0; i < 76; i++) {
+            const bunk = {
+                bunkNumber: (Math.floor(i / 2) + 19) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
+                bunkOccupant: null,
+                isMen: true,
+                isWomen: false,
+                isObservation: false
+            };
+            bunkData.push(bunk);
+        }
+
+        await bunkCollection.insertMany(bunkData);
+
+        console.log("Bunk database seeded! :)");
+
         
     } catch (err) {
         console.log(err.stack);

@@ -215,6 +215,42 @@ class GuestController {
         }
     });
 
+    public static getBunkReservations = asyncHandler(async (req: Request, res: Response) => {
+        const guests = await Guest.find({ "bunkReservation.hasRes" : true})
+
+        const reservationGuests = guests.map(guest => ({
+            id: guest._id,
+            firstName: guest.firstName,
+            lastName: guest.lastName,
+            dob: guest.DOB,
+            isActive: guest.isActive,
+            consecutiveDaysStayed: guest.consecutiveDaysStayed,
+            latestCheckInDate: guest.latestCheckInDate,
+            hmis_valid: guest.HMIS.isValid,
+            hmis_date: guest.HMIS.enterDate,
+            has_accommodation: guest.accommodation.hasAcc,
+            desc_accommodation: guest.accommodation.accDesc,
+            has_bunk_reservation: guest.bunkReservation.hasRes,
+            bunk_reservation_number: guest.bunkReservation.resNum,
+            locker: guest.locker,
+            laundry: guest.laundry,
+            bx_warning: guest.Bx.warning,
+            bx_suspension: guest.Bx.suspension,
+            bx_noTrespass: guest.Bx.noTrespass,
+            bx_probation: guest.Bx.probation,
+            bx_bxNotes: guest.Bx.bxNotes
+        }));
+
+
+        if (reservationGuests) {
+            res.status(200).json({
+                guests: reservationGuests,
+            });
+        } else {
+            res.status(500);
+            throw new Error('No reservations found');
+        }
+    });
 }
 
 export default GuestController;
