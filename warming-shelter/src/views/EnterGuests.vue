@@ -18,13 +18,8 @@
         />
     </div>
     <button class="bg-hrdc-blue text-white px-4 py-2 rounded" type="submit">Submit</button>
+    <input type="checkbox" v-model="isChecked">
 </form>
-
-
-
-
-
-
                     <div v-if="searchPredict.length > 0" class="search-results">
                         <ul>
                             <li
@@ -145,6 +140,9 @@
     methods: {
       addGuest() {
         // Ensure field is filled before adding the guest
+        // if(this.isChecked === true){
+        //   var services = true
+        // }
         if (this.searchQuery.split(" ").length >= 2) {
             const match = this.guests.filter(guest => {
                 const fullName = `${guest.firstName} ${guest.lastName}`.toLowerCase();
@@ -184,12 +182,19 @@
       },
       
       selectResult(result) {
-        //this.guestList.push(result)
+        // if(this.isChecked === true){
+        //   console.log("test")
+        // }
+        
         this.checkin(result)
         this.searchQuery = ""
       },
 
       checkin(guest){
+        if(this.isChecked === true){
+           console.log("test")
+        }
+        
         if(!(this.guestList.find(e => e.id === guest.id))){
           this.guestList.push(guest)
         }
