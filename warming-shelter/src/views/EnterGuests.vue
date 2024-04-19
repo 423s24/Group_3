@@ -18,7 +18,8 @@
         />
     </div>
     <button class="bg-hrdc-blue text-white px-4 py-2 rounded" type="submit">Submit</button>
-    <input type="checkbox" v-model="isChecked">
+    <input type="checkbox" id="services" v-model="isChecked">
+    <label for="services">Services Only</label>
 </form>
                     <div v-if="searchPredict.length > 0" class="search-results">
                         <ul>
@@ -38,8 +39,13 @@
               <ul class="grid grid-cols-2 gap-4">
                 <li v-for="guest in guestList" :key="guest.id">
                   <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
-                    <div :style="{ backgroundImage: getBackgroundColorClass(guest)}" class="p-4 border-2 border-hrdc-blue font-bold text-hrdc-blue text-md rounded cursor-pointer transition-transform transform hover:scale-105 hover:duration-300 text-center">
+                    <div class="p-4 border-2 border-hrdc-blue font-bold text-hrdc-blue text-md rounded cursor-pointer transition-transform transform hover:scale-105 hover:duration-300 text-center">
                       {{ guest.firstName + " " + guest.lastName}}
+                      <div class="flex flex-row justify-center">
+                        <div :style="{ backgroundImage: getBackgroundColorHMIS(guest)}" class="h-8 w-8 rounded-full"></div>
+                        <div :style="{ backgroundImage: getBackgroundColorNoTrespass(guest)}" class="h-8 w-8 rounded-full"></div>
+                        <div :style="{ backgroundImage: getBackgroundColorServicesOnly(guest)}" class="h-8 w-8 rounded-full"></div>
+                      </div>
                     </div>
                   </router-link>
                 </li>
@@ -61,10 +67,10 @@
               <div class="border-black border-2 w-10 h-10 m-3"></div>
               <div>No Discrepancies</div>
             </div>
-            <div class="flex items-center mb-2">
+            <!-- <div class="flex items-center mb-2">
               <div class="bg-purple-400 bg-opacity-50 border-black border-2 w-10 h-10 m-3"></div>
               <div>Has Recent Notes</div>
-            </div>
+            </div> -->
             <div class="flex items-center mb-2">
               <div class="bg-yellow-300 bg-opacity-50 border-black border-2 w-10 h-10 m-3"></div>
               <div>Need Info Added to HMIS</div>
@@ -257,7 +263,33 @@
         else{
           return 'linear-gradient(90deg, white, white)'
         }
+      },
+
+      getBackgroundColorHMIS(guest){
+        if(guest.hmis_valid === false){
+          return 'linear-gradient(90deg, rgb(253, 224, 71, 0.5), rgb(253, 224, 71, 0.5 ))'
+        }else{
+          return 'linear-gradient(90deg, white, white)'
+        }
+      },
+
+      getBackgroundColorNoTrespass(guest){
+        if(guest.bx_noTrespass === true){
+          return 'linear-gradient(90deg, rgb(239, 68, 68, 0.5), rgb(239, 68, 68, 0.5))'
+        }else{
+          return 'linear-gradient(90deg, white, white)'
+        }
+      },
+
+      getBackgroundColorServicesOnly(guest){
+        if(guest.laundry === true){
+          return 'linear gradient(90deg, rgb(54 83 20), rgb(54 83 20))'
+        }else{
+          return 'linear-gradient(90deg, white, white)'
+        }
       }
+
+
     }
   }
   </script>
