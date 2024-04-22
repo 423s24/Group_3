@@ -38,16 +38,19 @@
               <h3 class="text-hrdc-blue text-lg font-semibold mb-2">Guest List:</h3>
               <ul class="grid grid-cols-2 gap-4">
                 <li v-for="guest in guestList" :key="guest.id">
-                  <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
-                    <div class="p-4 border-2 border-hrdc-blue font-bold text-hrdc-blue text-md rounded cursor-pointer transition-transform transform hover:scale-105 hover:duration-300 text-center">
-                      {{ guest.firstName + " " + guest.lastName}}
-                      <div class="flex flex-row justify-center">
-                        <div :style="{ backgroundImage: getBackgroundColorHMIS(guest)}" class="h-8 w-8 rounded-full"></div>
-                        <div :style="{ backgroundImage: getBackgroundColorNoTrespass(guest)}" class="h-8 w-8 rounded-full"></div>
-                        <div :style="{ backgroundImage: getBackgroundColorServicesOnly(guest)}" class="h-8 w-8 rounded-full"></div>
+                  <div class="relative">
+                    <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
+                      <div class="p-4 border-2 border-hrdc-blue font-bold text-hrdc-blue text-md rounded cursor-pointer transition-transform transform hover:scale-105 hover:duration-300 text-center">
+                        {{ guest.firstName + " " + guest.lastName}}
+                        <div class="flex flex-row justify-center">
+                          <div :style="{ backgroundImage: getBackgroundColorHMIS(guest)}" class="h-8 w-8 rounded-full"></div>
+                          <div :style="{ backgroundImage: getBackgroundColorNoTrespass(guest)}" class="h-8 w-8 rounded-full"></div>
+                          <div :style="{ backgroundImage: getBackgroundColorServicesOnly(guest)}" class="h-8 w-8 rounded-full"></div>
+                        </div>
                       </div>
-                    </div>
-                  </router-link>
+                    </router-link> 
+                    <button @click="removeGuest(guest)" class="absolute top-0 right-0 bg-hrdc-blue hover:bg-red-500 text-white font-bold px-2 py-1 rounded-full transform transition duration-300 hover:scale-110">X</button>                      
+                  </div>
                 </li>
               </ul>
             </div>
@@ -293,13 +296,24 @@
         }else{
           return 'linear-gradient(90deg, white, white)'
         }
+      },
+
+      removeGuest(guest){
+        guest.isActive = false;
+        console.log("Profile before dispatch:", guest);
+        store.dispatch("guestModule/updateProfile", { id: guest.id, profile: guest})
+        .then(() => {
+          window.location.reload();
+          console.log("Profile updated successfully.");
+        })
+        .catch((error) => {
+          console.error("Error updating profile:", error);
+        });
       }
-
-
     }
   }
   </script>
-  <style>
+  <style scooped>
   .search-results {
     position: absolute;
     z-index: 1;
