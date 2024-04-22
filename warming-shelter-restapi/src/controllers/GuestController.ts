@@ -195,7 +195,7 @@ class GuestController {
                 resNum: null
             },
             locker: null,
-            laundry: false,
+            laundry: profile.laundry,
             Bx: {
                 warning: false,
                 suspension: false,

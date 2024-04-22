@@ -146,9 +146,12 @@
     methods: {
       addGuest() {
         // Ensure field is filled before adding the guest
-        // if(this.isChecked === true){
-        //   var services = true
-        // }
+        var services = false
+        if(this.isChecked === true){
+          console.log("test")
+           services = true
+           console.log(services)
+        }
         if (this.searchQuery.split(" ").length >= 2) {
             const match = this.guests.filter(guest => {
                 const fullName = `${guest.firstName} ${guest.lastName}`.toLowerCase();
@@ -165,7 +168,8 @@
                 const newGuest = {
                     firstName : fullName[0],
                     lastName : fullName[1],
-                    id: Date.now()
+                    id: Date.now(),
+                    laundry : services
                 }
                 // Works to make a new guest, but isn't properly pushed to guest list?
                 // Need to refresh page to get object to appear in guest lists
@@ -259,7 +263,9 @@
         else if(guest.hmis_valid === false){
           return 'linear-gradient(90deg, rgb(253, 224, 71, 0.5), rgb(253, 224, 71, 0.5 ))'
         }
-        // else if(guest.laundry)
+        else if(guest.laundry === true){
+          return 'linear-gradient(90deg, rgb(54 83 20 / var(--tw-bg-opacity))'
+        }
         else{
           return 'linear-gradient(90deg, white, white)'
         }
@@ -283,7 +289,7 @@
 
       getBackgroundColorServicesOnly(guest){
         if(guest.laundry === true){
-          return 'linear gradient(90deg, rgb(54 83 20), rgb(54 83 20))'
+          return 'linear-gradient(90deg, rgb(54 83 20), rgb(54 83 20))'
         }else{
           return 'linear-gradient(90deg, white, white)'
         }
