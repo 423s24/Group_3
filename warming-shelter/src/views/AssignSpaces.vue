@@ -107,15 +107,15 @@
           </div>
           
           <div v-else>
-            <button @click="switchView" class="switch-btn">Edit bunks</button>
-            <p class="text-2xl text-bg-blue-900">Lockers</p>
+              <button @click="switchView" class="switch-btn">Edit bunks</button>
+              <p class="text-2xl text-bg-blue-900">Lockers</p>
 
-            <div class="overflow-x-auto">
-                <!-- Container for the first 60 lockers -->
-                <div class="flex flex-row">
-                    <template v-for="i in 6">
-                        <div class="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 px-2 mb-4">
-                            <table class="w-full border-2 border-bg-blue-900">
+              <div class="overflow-x-auto">
+                  <!-- Container for the first 60 lockers -->
+                  <div class="flex flex-row flex-wrap">
+                      <template v-for="i in 6">
+                          <div class="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 px-2 mb-4">
+                              <table class="w-full border-2 border-bg-blue-900">
                                 <thead class="bg-blue-900">
                                     <tr>
                                         <th class="text-left p-3 text-white">Number<i class="bi-alarm"></i></th>
@@ -126,19 +126,19 @@
                                     <tr v-for="locker in 10" :key="(i - 1) * 10 + locker">
                                         <td class="p-3">{{ (i - 1) * 10 + locker }}</td>
                                         <td class="p-3">
-                                            <input type="text" class="w-full md:w-48 px-2 py-1 border rounded focus:outline-none focus:border-blue-500">
+                                            <input type="text" class="px-2 py-1 border rounded focus:outline-none focus:border-blue-500">
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
-                        </div>
-                    </template>
-                </div>
-                <!-- Container for the next 50 lockers -->
-                <div class="flex flex-row">
-                    <template v-for="i in 5">
-                        <div class="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 px-2 mb-4">
-                            <table class="w-full border-2 border-bg-blue-900">
+                              </table>
+                          </div>
+                      </template>
+                  </div>
+                  <!-- Container for the next 50 lockers -->
+                  <div class="flex flex-row flex-wrap mt-4">
+                      <template v-for="i in 5">
+                          <div class="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 px-2 mb-4">
+                              <table class="w-full border-2 border-bg-blue-900">
                                 <thead class="bg-blue-900">
                                     <tr>
                                         <th class="text-left p-3 text-white">Number<i class="bi-alarm"></i></th>
@@ -149,20 +149,19 @@
                                     <tr v-for="locker in 10" :key="(i - 1) * 10 + locker + 60">
                                         <td class="p-3">{{ (i - 1) * 10 + locker + 60 }}</td>
                                         <td class="p-3">
-                                            <input type="text" class="w-full md:w-48 px-2 py-1 border rounded focus:outline-none focus:border-blue-500">
+                                          <input type="text" class="px-2 py-1 border rounded focus:outline-none focus:border-blue-500">
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
-                        </div>
-                    </template>
-                </div>
-            </div>
-
+                              </table>
+                          </div>
+                      </template>
+                  </div>
+              </div>
           </div>
         </Wrapper>
-    </div>
-</template>
+      </div>
+    </template>
 
 <script>
 import { toHandlers } from 'vue';
