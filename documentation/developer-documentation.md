@@ -24,6 +24,7 @@ v0.1.1
 - [Releases](#releases)
 - [Errors and Bugs](#errors-and-bugs)
 - [Code Format and Documentation](#code-format-and-documentation)
+- [Editing Bunks & Lockers](#editing-bunks--lockers)
 
 ## Motivation
 
@@ -130,3 +131,22 @@ issue.
 
 The code is formatted using VSCode's built-in formatter and follows the Airbnb JavaScript style guide.
 The documentation is written in Markdown and follows the GitHub Markdown style guide.
+
+## Editing Bunks & Lockers
+The number of bunks and lockers available at the shelter are easily editable in preparation for the new building! Currently, there is no user interface which allows this editing to take place, it requires running a script to communicate directly with the database. However, this script is super easy to modify and use! Locate the script at the highest level of this repository: <br>`seedScript.js` 
+### Bunks
+To begin modifying bunk entires, navigate to `line 63` (or where the following line of code appears:<br> 
+`const bunkCollection = client.db("test").collection("bunks");`)<br> 
+Here you will find three variable assignments: <br>
+(1) `numObservationBunks`<br>
+(2) `numWomenBunks` <br>
+(3) `numMenBunks` <br>
+Each variable represent the number of bunks for each respective group that are present in the shelter. To change the number of bunks, simply change the value the variable is being assigned to. Lock in your changes by running the file.
+
+### Lockers
+To begin modifying bunk entires, navigate to `line 111` (or where the following line of code appears:<br> 
+`const lockerCollection = client.db("test").collection("lockers");`)<br> 
+Here you will find the following variable:<br>
+(1) `numLockers`<br>
+This variable represents the number of lockers that are present in the shelter. To modify this, simply change the value the variable is being assigned to. Lock in your changes by running the file. 
+

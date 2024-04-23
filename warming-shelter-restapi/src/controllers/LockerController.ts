@@ -12,11 +12,14 @@ class LockerController {
             throw new Error('Please provide locker number');
         }
 
+        console.log(number)
+
         const foundLocker = await Locker.findOne({lockerNumber: number});
 
         console.log(foundLocker)
 
         if (!foundLocker) {
+            console.log("not found")
             res.status(404);
             throw new Error('Locker not found');
         }

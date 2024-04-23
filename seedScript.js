@@ -64,8 +64,12 @@ async function seedDB() {
         await bunkCollection.deleteMany({});
         let bunkData = [];
 
+        numObservationBunks = 18;
+        numWomenBunks = 18;
+        numMenBunks = 76;
+
         // For Observation
-        for(let i = 0; i < 18; i++) {
+        for(let i = 0; i < numObservationBunks; i++) {
             const bunk = {
                 bunkNumber: (Math.floor(i / 2) + 1) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
                 bunkOccupant: null,
@@ -77,7 +81,7 @@ async function seedDB() {
         }
 
         // For Women
-        for(let i = 0; i < 18; i++) {
+        for(let i = 0; i < numWomenBunks; i++) {
             const bunk = {
                 bunkNumber: (Math.floor(i / 2) + 10) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
                 bunkOccupant: null,
@@ -89,7 +93,7 @@ async function seedDB() {
         }
 
         // For Men
-        for(let i = 0; i < 76; i++) {
+        for(let i = 0; i < numMenBunks; i++) {
             const bunk = {
                 bunkNumber: (Math.floor(i / 2) + 19) + String.fromCharCode(96 + (i % 2 === 0 ? 1 : 2)),
                 bunkOccupant: null,
@@ -108,7 +112,9 @@ async function seedDB() {
         await lockerCollection.deleteMany({});
         let lockerData = [];
 
-        for(let i = 1; i <= 111; i ++) {
+        numLockers = 111;
+
+        for(let i = 1; i <= numLockers; i ++) {
             const locker = {
                 lockerNumber: i,
                 lockerOccupant: null
