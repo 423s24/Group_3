@@ -108,7 +108,7 @@
           
           <div v-else>
             <button @click="switchView" class="switch-btn">Edit bunks</button>
-            <p class="text-2xl text-bg-blue-900">Locker's</p>
+            <p class="text-2xl text-bg-blue-900">Lockers</p>
 
             <div class="overflow-x-auto">
                 <!-- Container for the first 60 lockers -->
@@ -165,6 +165,7 @@
 </template>
 
 <script>
+import { toHandlers } from 'vue';
 import Header from '../components/Header.vue'
 import Wrapper from '../components/Wrapper.vue'
 import store from "../store/store.js"
@@ -271,12 +272,7 @@ import store from "../store/store.js"
         }
       },
       switchView(){
-        if(this.viewBunks){
-          this.viewBunks = false;
-        } else {
-          this.viewBunks = true;
-        }
-        
+        this.viewBunks = !this.viewBunks
       }
     }   
   }

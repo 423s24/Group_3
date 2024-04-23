@@ -134,7 +134,7 @@
     }
   };
 </script>
-<style scoped>
+<style>
     form {
         max-width: 420px;
         margin: 30px auto;
