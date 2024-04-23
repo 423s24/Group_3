@@ -180,7 +180,8 @@ import store from "../store/store.js"
         guests: [],
         reservations: [],
         bunks: [],
-        viewBunks: true
+        viewBunks: true,
+        lockers: []
       };
     },
     async created(){
@@ -213,7 +214,17 @@ import store from "../store/store.js"
         console.log(this.bunks);
       })
       .catch((error) => {
-        console.error("Error fetching guests:", error);
+        console.error("Error fetching bunks:", error);
+      });
+
+      //Get all lockers
+      store.dispatch("lockerModule/getAll")
+      .then((data) => {
+        this.lockers = data.lockers;
+        console.log(this.lockers);
+      })
+      .catch((error) => {
+        console.error("Error fetching lockers:", error);
       });
 
     },

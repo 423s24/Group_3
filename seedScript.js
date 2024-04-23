@@ -104,6 +104,22 @@ async function seedDB() {
 
         console.log("Bunk database seeded! :)");
 
+        const lockerCollection = client.db("test").collection("lockers");
+        await lockerCollection.deleteMany({});
+        let lockerData = [];
+
+        for(let i = 1; i <= 111; i ++) {
+            const locker = {
+                lockerNumber: i,
+                lockerOccupant: null
+            };
+            lockerData.push(locker)
+        }
+
+        await lockerCollection.insertMany(lockerData);
+
+        console.log("Locker database seeded! :)");
+
         
     } catch (err) {
         console.log(err.stack);
