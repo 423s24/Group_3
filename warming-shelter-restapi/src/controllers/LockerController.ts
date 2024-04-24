@@ -52,6 +52,39 @@ class LockerController {
             throw new Error('No lockers found');
         }
     })
+
+    public static getNumbers = asyncHandler(async (req: Request, res: Response) => {
+        const lockers = await Locker.find({});
+
+        const allLockers = lockers.map(locker => ({
+            number: locker.lockerNumber,
+            name: locker.lockerOccupant,
+        }))
+
+        if (allLockers) {
+            let filledCount = 0;
+            let emptyCount = 0;
+
+            for (const locker of lockers) {
+                if (locker.lockerOccupant && locker.lockerOccupant.trim() !== "") {
+                    filledCount++;
+                } else {
+                    emptyCount++;
+                }
+            }
+            
+            console.log(filledCount, emptyCount)
+            res.status(200).json({
+                filledCount: filledCount,
+                emptyCount: emptyCount,
+            });
+        } else {
+            res.status(500);
+            throw new Error('No lockers found');
+        }
+    })
+
+
 }
 
 export default LockerController

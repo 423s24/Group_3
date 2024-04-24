@@ -51,8 +51,8 @@ export default {
         dayLockersAvailable: 0,
         storageLockersAvailable: 0
       },
-      guestList: []
-
+      guestList: [],
+      numbers:[]
     }
   },
   async created() {
@@ -64,6 +64,17 @@ export default {
         .catch((error) => {
           console.error("Error fetching guests:", error);
         });
+    
+    store.dispatch("lockerModule/getNumbers")
+        .then((data) => {
+          this.numbers = data.lockers;
+          console.log(this.lockers);
+        })
+        .catch((error) => {
+          console.error("Error fetching numbers:", error);
+        });
+      
+        
     // const user = JSON.parse(localStorage.getItem('user'));
     // this.firstName = user.user.firstName;
     // this.lastName = user.user.lastName;

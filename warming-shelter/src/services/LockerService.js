@@ -33,6 +33,17 @@ class LockerService {
 
         return res.data;
     }
+
+    async getNumbers(){
+        const res = await axios.get(API_URL + '/numbers');
+        if (res.status === 200) {
+            localStorage.setItem('locker', JSON.stringify(res.data));
+            this.locker = res.data;
+            console.log(this.locker)
+        }
+
+        return res.data;
+    }
 }
 
 export default new LockerService();

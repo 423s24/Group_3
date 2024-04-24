@@ -33,6 +33,17 @@ export const lockerModule = {
                 return Promise.reject(error);
             }
         },
+        async getNumbers({ commit }){
+            try{
+                const lockers = await LockerService.getNumbers();
+                console.log(lockers);
+                commit('getAllSuccess', lockers);
+                return Promise.resolve(lockers);
+            } catch(error){
+                commit('getAllFailure');
+                return Promise.reject(error);
+            }
+        },
     },
     mutations: {
         updateSuccess(state, res){

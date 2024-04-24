@@ -13,4 +13,6 @@ lockerRouter.put('/update', LockerController.updateLockerByNumber);
 // Get All Locker Route
 lockerRouter.get('/all', LockerController.getAllLocker);
 
+lockerRouter.get('/numbers', LockerController.getNumbers);
+
 export default lockerRouter
