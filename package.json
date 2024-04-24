@@ -1,6 +1,39 @@
 {
+  "name": "hrdc-app",
+  "version": "1.0.0",
+  "description": "Custom software solution designed to enhance the operation of the HRDC’s year-round homeless warming center in Bozeman, Montana.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm run dev --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/423s24/Group_3.git"
+  },
+  "author": "Shane Costello, Cody Fingerson, Sage James, Jonathan Neuman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/423s24/Group_3/issues"
+  },
+  "homepage": "https://github.com/423s24/Group_3#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.2",
     "@faker-js/faker": "^8.4.1",
     "mongodb": "^6.5.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.0"
   }
 }

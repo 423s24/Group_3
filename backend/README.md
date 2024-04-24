@@ -78,9 +78,3 @@ This project is open to contributions. If you would like to contribute, please f
 MIT License (MIT) - see [`LICENSE`](LICENSE) for more details.
 
 ---
-
-## Authors
-- [Shane Costello](https://github.com/ShaneCost)
-- [Cody Fingerson](https://github.com/codyafingerson)
-- [Sage James](https://github.com/sagejames1)
-- [Jon Neuman](https://github.com/JonathanNeuman)

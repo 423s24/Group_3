@@ -1,24 +1,25 @@
 <template>
   <div>
-    <Header/>
+    <Header />
     <br>
     <Wrapper>
-      <h1 class="text-center">Welcome, {{ firstName }} {{ lastName }}!</h1>
+      <h1 class="text-center">Welcome, {{ userFirstName }} {{ userLastName }}!</h1>
       <div class="flex">
-        <CounterCard :title="guestList.length + ' Guests Checked In'" :content="guestList.length + ' Overnight Stays'"/>
-        <CounterCard :title="`${guestData.bunksAssigned} Bunks Assigned`" 
-                     :content="`${guestData.topBunksAvailable} Top Bunks Available ${guestData.bottomBunksAvailable} Bottom Bunks Available`"/>
-        <CounterCard :title="`${guestData.lockersAssigned} Lockers Assigned`" 
-                     :content="`${guestData.dayLockersAvailable} Day Lockers Available ${guestData.storageLockersAvailable} Storage Lockers Available`"/>
+        <CounterCard :title="guestList.length + ' Guests Checked In'"
+          :content="guestList.length + ' Overnight Stays'" />
+        <CounterCard :title="`${guestData.bunksAssigned} Bunks Assigned`"
+          :content="`${guestData.topBunksAvailable} Top Bunks Available ${guestData.bottomBunksAvailable} Bottom Bunks Available`" />
+        <CounterCard :title="`${guestData.lockersAssigned} Lockers Assigned`"
+          :content="`${guestData.dayLockersAvailable} Day Lockers Available ${guestData.storageLockersAvailable} Storage Lockers Available`" />
       </div>
 
-      <NoteSection NoteTitle="Guest Notes"/>
-      <NoteSection NoteTitle="Guest Coordination"/>
-      
+      <NoteSection NoteTitle="Guest Notes" />
+      <NoteSection NoteTitle="Guest Coordination" />
+
       <br>
       <br>
-      <NoteSection NoteTitle="Nightly Highlights"/>
-      <NoteSection NoteTitle="New Guest Name and Introduction"/>
+      <NoteSection NoteTitle="Nightly Highlights" />
+      <NoteSection NoteTitle="New Guest Name and Introduction" />
     </Wrapper>
   </div>
 </template>
@@ -40,6 +41,8 @@ export default {
   },
   data() {
     return {
+      userFirstName: "",
+      userLastName: "",
       guestData: {
         guestsCheckedIn: 0,
         overnightStays: 0,
@@ -59,31 +62,34 @@ export default {
   },
   async created() {
     store.dispatch("guestModule/getCurrent")
-        .then((data) => {
-          this.guestList = data.guests;
-          console.log(this.guestList);
-        })
-        .catch((error) => {
-          console.error("Error fetching guests:", error);
-        });
-    
-    store.dispatch("lockerModule/getNumbers")
-        .then((data) => {
-          console.log(data);
-          this.emptyLockers = data.emptyCount;
-          this.filledLockers = data.filledCount;
-          console.log(this.emptyLockers);
-          console.log(this.filledLockers);
-        })
-        .catch((error) => {
-          console.error("Error fetching lockers:", error);
-        });
-      
-        
-    // const user = JSON.parse(localStorage.getItem('user'));
-    // this.firstName = user.user.firstName;
-    // this.lastName = user.user.lastName;
+      .then((data) => {
+        this.guestList = data.guests;
+        console.log(this.guestList);
+      })
+      .catch((error) => {
+        console.error("Error fetching guests:", error);
+      });
 
+    store.dispatch("lockerModule/getNumbers")
+      .then((data) => {
+        console.log(data);
+        this.emptyLockers = data.emptyCount;
+        this.filledLockers = data.filledCount;
+        console.log(this.emptyLockers);
+        console.log(this.filledLockers);
+      })
+      .catch((error) => {
+        console.error("Error fetching lockers:", error);
+      });
+
+
+    const cachedUser = JSON.parse(localStorage.getItem('user'));
+    if (cachedUser) {
+      this.userFirstName = cachedUser.firstName || '';
+      this.userLastName = cachedUser.lastName || '';
+    } else {
+      console.error('User not found in local storage');
+    }
     // // Fetch initial data from MongoDB
     // this.fetchGuestData();
 

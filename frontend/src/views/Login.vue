@@ -30,12 +30,6 @@
   </section>
 </template>
 
-<style scoped>
-.login-btn:hover {
-  opacity: 0.8;
-}
-</style>
-
 <script>
 import store from "../store/store.js";
 
@@ -48,7 +42,7 @@ export default {
   },
   methods: {
     submitForm() {
-      store.dispatch("authModule/login", {
+      store.dispatch("userModule/loginUser", {
         username: this.username,
         password: this.password,
       });
@@ -56,3 +50,26 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.login-btn {
+  margin-top: 20px;
+}
+
+.login-btn:hover {
+  opacity: 0.8;
+}
+
+form {
+  max-width: 420px;
+  margin: 30px auto;
+  background: white;
+  text-align: left;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+input {
+  margin-bottom: 5px;
+}
+</style>
