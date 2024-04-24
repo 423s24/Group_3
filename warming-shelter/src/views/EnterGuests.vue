@@ -58,7 +58,14 @@
         </div>
         <div class="w-1/3 p-4 flex flex-col justify-start">
           <div class="mb-4">
-            <button @click="checkoutAll" class="bg-hrdc-green text-white py-2 px-4 rounded-md hover:bg-hrdc-teal">Checkout All Guests</button>
+            <button @click="showCheckoutConfirm" class="bg-hrdc-green text-white py-2 px-4 rounded-md hover:bg-hrdc-teal">Checkout All Guests</button>
+            <div v-if="showPopup" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+              <div class="bg-white p-8 rounded">
+                <p>Are you sure you want to check out all guests?</p>
+                <button @click="checkoutAll" class="bg-hrdc-blue text-white py-2 px-4 rounded mr-2 justify-center">Yes</button>
+                <button @click="cancelCheckout" class="bg-gray-400 text-white py-2 px-4 rounded justify-center">No</button>
+              </div>
+            </div>
           </div>
           <div class="mb-4">
             <CounterCard :title="guestList.length + ' Guests Checked In'" :content="guestList.length + ' Overnight Stays'" class="w-full" />
@@ -113,6 +120,7 @@
         searchQuery: '',
         guestList: [],
         guests: [],
+        showPopup: false
       }
     },
     computed: {
@@ -229,6 +237,14 @@
 
       },
 
+      showCheckoutConfirm(){
+        this.showPopup = true;
+      },
+
+      cancelCheckout(){
+        this.showPopup = false;
+      },
+
       checkoutAll(){
         const guestsToCheckout = this.guestList
         for (const guest of guestsToCheckout){
@@ -243,6 +259,7 @@
           });
         }
         this.guestList = [];
+        this.showPopup = false;
       },
 
       isYesterday(comparedDate) {
