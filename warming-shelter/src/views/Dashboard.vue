@@ -47,12 +47,14 @@ export default {
         bunksAssigned: 0,
         topBunksAvailable: 0,
         bottomBunksAvailable: 0,
-        lockersAssigned: 0,
+        lockersAssigned: this.filledLockers,
         dayLockersAvailable: 0,
-        storageLockersAvailable: 0
+        storageLockersAvailable: this.emptyLockers
       },
       guestList: [],
-      numbers:[]
+      numbers: [],
+      filledLockers: NaN,
+      emptyLockers: NaN
     }
   },
   async created() {
@@ -67,11 +69,14 @@ export default {
     
     store.dispatch("lockerModule/getNumbers")
         .then((data) => {
-          this.numbers = data.lockers;
-          console.log(this.lockers);
+          console.log(data);
+          this.emptyLockers = data.emptyCount;
+          this.filledLockers = data.filledCount;
+          console.log(this.emptyLockers);
+          console.log(this.filledLockers);
         })
         .catch((error) => {
-          console.error("Error fetching numbers:", error);
+          console.error("Error fetching lockers:", error);
         });
       
         

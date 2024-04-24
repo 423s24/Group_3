@@ -37,13 +37,13 @@ export const lockerModule = {
             try{
                 const lockers = await LockerService.getNumbers();
                 console.log(lockers);
-                commit('getAllSuccess', lockers);
+                commit('getNumberSuccess', lockers);
                 return Promise.resolve(lockers);
             } catch(error){
-                commit('getAllFailure');
+                commit('getNumberFailure');
                 return Promise.reject(error);
             }
-        },
+        }
     },
     mutations: {
         updateSuccess(state, res){
@@ -60,7 +60,15 @@ export const lockerModule = {
         },
         getAllFailure(state){
             state.lockers = null;
-            state.error = 'Unable to retrieve all lockers from database'
+            state.errorMessage = 'Unable to retrieve all lockers from database'
+        },
+        getNumberSuccess(state, lockers) {
+            state.lockers = lockers;
+            state.errorMessage = '';
+        },
+        getNumberFailure(state) {
+            state.lockers = null;
+            state.errorMessage = 'Unable to retrieve lockers number from database'
         }
     }
 }
