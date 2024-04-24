@@ -122,7 +122,64 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="locker in lockers" :key="locker.number">
+                          <tr v-for="locker in lockers.slice(0, 28)" :key="locker.number">
+                            <td class="p-3">{{ locker.number }}</td>
+                            <td class="p-3">
+                              <input type="text" v-model="locker.name" @input="updateLocker(locker.number, locker.name)" class="border-2 border-gray-500 rounded px-3 py-1 w-full">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="float-left">
+                      <p class="text-2xl text-white">blank</p>
+                      <table class="w-full border-2 border-bg-blue-900">
+                        <thead class="bg-blue-900">
+                          <tr>
+                            <th class="text-left p-3 text-white">Number<i class="bi-alarm"></i></th>
+                            <th class="text-left p-3 text-white">Guest</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="locker in lockers.slice(28, 55)" :key="locker.number">
+                            <td class="p-3">{{ locker.number }}</td>
+                            <td class="p-3">
+                              <input type="text" v-model="locker.name" @input="updateLocker(locker.number, locker.name)" class="border-2 border-gray-500 rounded px-3 py-1 w-full">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="float-left">
+                      <p class="text-2xl text-white">blank</p>
+                      <table class="w-full border-2 border-bg-blue-900">
+                        <thead class="bg-blue-900">
+                          <tr>
+                            <th class="text-left p-3 text-white">Number<i class="bi-alarm"></i></th>
+                            <th class="text-left p-3 text-white">Guest</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="locker in lockers.slice(55, 83)" :key="locker.number">
+                            <td class="p-3">{{ locker.number }}</td>
+                            <td class="p-3">
+                              <input type="text" v-model="locker.name" @input="updateLocker(locker.number, locker.name)" class="border-2 border-gray-500 rounded px-3 py-1 w-full">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="float-left">
+                      <p class="text-2xl text-white">blank</p>
+                      <table class="w-full border-2 border-bg-blue-900">
+                        <thead class="bg-blue-900">
+                          <tr>
+                            <th class="text-left p-3 text-white">Number<i class="bi-alarm"></i></th>
+                            <th class="text-left p-3 text-white">Guest</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="locker in lockers.slice(83)" :key="locker.number">
                             <td class="p-3">{{ locker.number }}</td>
                             <td class="p-3">
                               <input type="text" v-model="locker.name" @input="updateLocker(locker.number, locker.name)" class="border-2 border-gray-500 rounded px-3 py-1 w-full">

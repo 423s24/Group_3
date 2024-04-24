@@ -47,7 +47,7 @@ export const lockerModule = {
             state.lockers = lockers;
             state.errorMessage = '';
         },
-        getAllGuestsFailure(state){
+        getAllFailure(state){
             state.lockers = null;
             state.error = 'Unable to retrieve all lockers from database'
         }

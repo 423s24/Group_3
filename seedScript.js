@@ -63,7 +63,8 @@ async function seedDB() {
         const bunkCollection = client.db("test").collection("bunks");
         await bunkCollection.deleteMany({});
         let bunkData = [];
-
+        
+        // CHANGE HERE
         numObservationBunks = 18;
         numWomenBunks = 18;
         numMenBunks = 76;
@@ -112,11 +113,12 @@ async function seedDB() {
         await lockerCollection.deleteMany({});
         let lockerData = [];
 
+        // CHANGE HERE
         numLockers = 111;
 
         for(let i = 1; i <= numLockers; i ++) {
             const locker = {
-                lockerNumber: i,
+                lockerNumber: String(i),
                 lockerOccupant: null
             };
             lockerData.push(locker)
