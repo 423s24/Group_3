@@ -33,6 +33,17 @@ export const bunkModule = {
                 return Promise.reject(error);
             }
         },
+        async getNumbers({ commit }){
+            try{
+                const bunks = await BunkService.getNumbers();
+                console.log(bunks);
+                commit('getNumberSuccess', bunks);
+                return Promise.resolve(bunks);
+            } catch(error){
+                commit('getNumberFailure');
+                return Promise.reject(error);
+            }
+        }
     },
     mutations: {
         updateSuccess(state, res){
@@ -50,6 +61,14 @@ export const bunkModule = {
         getAllGuestsFailure(state){
             state.bunks = null;
             state.error = 'Unable to retrieve all guests from database'
+        },
+        getNumberSuccess(state, bunks) {
+            state.bunks = bunks;
+            state.errorMessage = '';
+        },
+        getNumberFailure(state) {
+            state.bunks = null;
+            state.errorMessage = 'Unable to retrieve bunk number from database'
         }
     }
 }

@@ -27,9 +27,21 @@ const getAll = async () => {
     return res.data;
 }
 
+const getNumbers = async () => {
+    const res = await axios.get(API_URL + '/numbers', { headers: getAuthHeaders() });
+    if (res.status === 200) {
+        localStorage.setItem('bunk', JSON.stringify(res.data));
+        this.bunk = res.data;
+        console.log(this.bunk)
+    }
+
+    return res.data;
+}
+
 const BunkService = {
     updateBunk,
-    getAll
+    getAll,
+    getNumbers
 }
 
 export default BunkService;

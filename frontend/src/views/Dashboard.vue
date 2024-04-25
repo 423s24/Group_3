@@ -57,7 +57,9 @@ export default {
       guestList: [],
       numbers: [],
       filledLockers: NaN,
-      emptyLockers: NaN
+      emptyLockers: NaN,
+      filledBunks: NaN,
+      emptyBunks: NaN
     }
   },
   async created() {
@@ -80,6 +82,18 @@ export default {
       })
       .catch((error) => {
         console.error("Error fetching lockers:", error);
+      });
+    
+    store.dispatch("bunkModule/getNumbers")
+      .then((data) => {
+        console.log(data);
+        this.emptyBunks = data.emptyCount;
+        this.filledBunks = data.filledCount;
+        console.log(this.emptyBunks);
+        console.log(this.filledBunks);
+      })
+      .catch((error) => {
+        console.error("Error fetching bunks:", error);
       });
 
 

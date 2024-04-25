@@ -50,7 +50,39 @@ const getAllBunks = asyncHandler(async (req, res) => {
     }
 });
 
+const getNumbers = asyncHandler(async (req, res) => {
+    const bunks = await Bunk.find({});
+
+    const allBunks = bunks.map(bunk => ({
+        number: bunk.bunkNumber,
+        name: bunk.bunkOccupant,
+    }))
+
+    if (allBunks) {
+        let filledCount = 0;
+        let emptyCount = 0;
+
+        for (const bunk of bunks) {
+            if (bunk.bunkOccupant && bunk.bunkOccupant.trim() !== "") {
+                filledCount++;
+            } else {
+                emptyCount++;
+            }
+        }
+
+        console.log(filledCount, emptyCount)
+        res.status(200).json({
+            filledCount: filledCount,
+            emptyCount: emptyCount,
+        });
+    } else {
+        res.status(500);
+        throw new Error('No bunks found');
+    }
+});
+
 module.exports = {
     getAllBunks,
-    updateBunkByNumber
+    updateBunkByNumber,
+    getNumbers
 };
