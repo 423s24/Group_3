@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { getAllBunks, updateBunkByNumber } = require("../controllers/bunkController");
+const { getAllBunks, updateBunkByNumber, getNumbers } = require("../controllers/bunkController");
 
 const {requireAuth} = require("../middleware/authMiddleware");
 
