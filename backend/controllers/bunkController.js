@@ -66,7 +66,17 @@ const getNumbers = asyncHandler(async (req, res) => {
         for (const bunk of bunks) {
             if (bunk.bunkOccupant && bunk.bunkOccupant.trim() !== "") {
                 filledCount++;
-            } else {
+            // } else {
+            //     if (bunk.bunkNumber.includes('a')) {
+            //         emptyCount_top++;
+            //     } else {
+            //         emptyCount_bottom++;
+            //     }
+            }
+        }
+
+        for (const bunk of bunks) {
+            if (!bunk.bunkOccupant || bunk.bunkOccupant.trim() === "") {
                 if (bunk.bunkNumber.includes('a')) {
                     emptyCount_top++;
                 } else {
