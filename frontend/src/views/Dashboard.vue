@@ -7,10 +7,10 @@
       <div class="flex">
         <CounterCard :title="guestList.length + ' Guests Checked In'"
           :content="guestList.length + ' Overnight Stays'" />
-        <CounterCard :title="`${guestData.bunksAssigned} Bunks Assigned`"
-          :content="`${guestData.topBunksAvailable} Top Bunks Available ${guestData.bottomBunksAvailable} Bottom Bunks Available`" />
-        <CounterCard :title="`${guestData.lockersAssigned} Lockers Assigned`"
-          :content="`${guestData.dayLockersAvailable} Day Lockers Available ${guestData.storageLockersAvailable} Storage Lockers Available`" />
+        <CounterCard :title="`${filledBunks} Bunks Assigned`"
+          :content="`${emptyBunks_top} Top Bunks Available ${emptyBunks_bottom} Bottom Bunks Available`" />
+        <CounterCard :title="`${filledLockers} Lockers Assigned`"
+          :content="`${emptyLockers} Day Lockers Available`" />
       </div>
 
       <NoteSection NoteTitle="Guest Notes" />
@@ -56,10 +56,11 @@ export default {
       },
       guestList: [],
       numbers: [],
-      filledLockers: NaN,
-      emptyLockers: NaN,
-      filledBunks: NaN,
-      emptyBunks: NaN
+      filledLockers: 0,
+      emptyLockers: 0,
+      filledBunks: 0,
+      emptyBunks_top: 0,
+      emptyBunks_bottom: 0
     }
   },
   async created() {
@@ -77,8 +78,8 @@ export default {
         console.log(data);
         this.emptyLockers = data.emptyCount;
         this.filledLockers = data.filledCount;
-        console.log(this.emptyLockers);
-        console.log(this.filledLockers);
+        console.log('locker: ', this.emptyLockers);
+        console.log('locker: ', this.filledLockers);
       })
       .catch((error) => {
         console.error("Error fetching lockers:", error);
@@ -87,10 +88,12 @@ export default {
     store.dispatch("bunkModule/getNumbers")
       .then((data) => {
         console.log(data);
-        this.emptyBunks = data.emptyCount;
+        this.emptyBunks_top = data.emptyCount_top;
+        this.emptyBunks_bottom = data.emptyCount_bottom;
         this.filledBunks = data.filledCount;
-        console.log(this.emptyBunks);
-        console.log(this.filledBunks);
+        console.log('bunks: ', this.emptyBunks_top);
+        console.log('bunks: ', this.emptyBunks_bottom);
+        console.log('bunks: ', this.filledBunks);
       })
       .catch((error) => {
         console.error("Error fetching bunks:", error);

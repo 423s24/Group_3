@@ -31,7 +31,6 @@ const getAll = async () => {
     const res = await axios.get(API_URL + '/all', { headers: getAuthHeaders() });
     if (res.status === 200) {
         localStorage.setItem('locker', JSON.stringify(res.data));
-        this.locker = res.data;
     }
 
     return res.data;
@@ -41,8 +40,7 @@ const getNumbers = async () => {
     const res = await axios.get(API_URL + '/numbers', { headers: getAuthHeaders() });
     if (res.status === 200) {
         localStorage.setItem('locker', JSON.stringify(res.data));
-        this.locker = res.data;
-        console.log(this.locker)
+        console.log(res.data)
     }
 
     return res.data;

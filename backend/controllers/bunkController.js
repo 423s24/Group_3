@@ -60,20 +60,26 @@ const getNumbers = asyncHandler(async (req, res) => {
 
     if (allBunks) {
         let filledCount = 0;
-        let emptyCount = 0;
+        let emptyCount_top = 0;
+        let emptyCount_bottom = 0;
 
         for (const bunk of bunks) {
             if (bunk.bunkOccupant && bunk.bunkOccupant.trim() !== "") {
                 filledCount++;
             } else {
-                emptyCount++;
+                if (bunk.bunkNumber.includes('a')) {
+                    emptyCount_top++;
+                } else {
+                    emptyCount_bottom++;
+                }
             }
         }
 
-        console.log(filledCount, emptyCount)
+        console.log(filledCount, emptyCount_top, emptyCount_bottom)
         res.status(200).json({
             filledCount: filledCount,
-            emptyCount: emptyCount,
+            emptyCount_top: emptyCount_top,
+            emptyCount_bottom: emptyCount_top
         });
     } else {
         res.status(500);
