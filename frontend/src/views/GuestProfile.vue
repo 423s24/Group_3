@@ -3,6 +3,18 @@
     <Header/>
     <br>
     <Wrapper>
+      <h1 class="text-3xl text-hrdc-blue font-bold text-center">Guest Profile</h1>
+      <br>
+      <!-- add a section to tell user instructions on how to edit the profile -->
+      <div class="max-w-lg mx-auto">
+        <div class="bg-hrdc-green rounded px-6 pt-6 pb-4 mb-4">
+          <div class="mb-4">
+            <p class="text-hrdc-blue text-md text-center font-extrabold">Double click on a field to edit it.</p>
+            <p class="text-hrdc-blue text-md text-center">Also be sure to hit save! </p>
+          </div>
+        </div>
+      </div>
+      
       <div class="max-w-lg mx-auto">
         <form @submit.prevent="saveProfile" v-if="isEditing" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <!-- Input for Behavior Status -->

@@ -6,6 +6,8 @@
           <div v-if="viewBunks">
             <button @click="switchView" class="switch-btn">Edit lockers</button>
             <button class="checkout-btn" @click="checkoutAll">Clear All</button>
+            <br>
+            <br>
             <div class="table-container">
               <div class="float-left">
                 <p class="text-2xl text-bg-blue-900"> {{ reservations.length }} Reservations</p>
@@ -108,7 +110,8 @@
           
           <div v-else>
               <button @click="switchView" class="switch-btn">Edit bunks</button>
-
+              <br>
+              <br>
               <div class="overflow-x-auto">
                 <!-- Container for the lockers -->
                 <div class="table-container">
