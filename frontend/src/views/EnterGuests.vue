@@ -44,9 +44,9 @@
                       <div class="p-4 border-2 border-hrdc-blue font-bold text-hrdc-blue text-md rounded cursor-pointer transition-transform transform hover:scale-105 hover:duration-300 text-center">
                         {{ guest.firstName + " " + guest.lastName}}
                         <div class="flex flex-row justify-center">
-                          <div :style="{ backgroundImage: getBackgroundColorHMIS(guest)}" class="h-8 w-8 rounded-full"></div>
-                          <div :style="{ backgroundImage: getBackgroundColorNoTrespass(guest)}" class="h-8 w-8 rounded-full"></div>
-                          <div :style="{ backgroundImage: getBackgroundColorServicesOnly(guest)}" class="h-8 w-8 rounded-full"></div>
+                          <div :style="{ backgroundImage: getBackgroundColorHMIS(guest)}" class="h-8 w-8 rounded-full border-2 border-hrdc-blue"></div>
+                          <div :style="{ backgroundImage: getBackgroundColorNoTrespass(guest)}" class="h-8 w-8 rounded-full border-2 border-hrdc-blue"></div>
+                          <div :style="{ backgroundImage: getBackgroundColorServicesOnly(guest)}" class="h-8 w-8 rounded-full border-2 border-hrdc-blue"></div>
                         </div>
                       </div>
                     </router-link> 
