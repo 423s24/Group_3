@@ -253,6 +253,7 @@ import store from "../store/store.js"
       store.dispatch("lockerModule/getAll")
       .then((data) => {
         this.lockers = data.lockers;
+        this.lockers.sort((a, b) => a.lockerNumber - b.lockerNumber);
         console.log(this.lockers);
       })
       .catch((error) => {
