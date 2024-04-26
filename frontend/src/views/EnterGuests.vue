@@ -7,17 +7,18 @@
         <div class="w-2/3 p-4 m-4">
             <div class="w-full m-4 p-4">
               <form class="flex items-center justify-between w-full p-0 m-0" @submit.prevent="addGuest">
-    <label for="guestSearch" class="text-left">Enter Guest:</label>
-    <div class="flex-grow">
-        <input
-            class="w-full border border-hrdc-green mr-50 rounded focus:outline-none focus:border-blue-500"
-            type="text"
-            id="guestSearch"
-            v-model="searchQuery"
-            placeholder="Search for a guest..."
-        />
+    <label for="guestSearch" class="block text-left mb-2">Enter Guest:</label>
+    <div class="flex">
+      <input
+        class="flex-grow py-2 px-4 border-2 border-hrdc-green rounded-lg focus:outline-hrdc-teal focus:border-hrdc-teal"
+        type="text"
+        id="guestSearch"
+        v-model="searchQuery"
+        placeholder="Search for a guest..."
+        style="min-width: 200px;"
+    />
     </div>
-    <button class="bg-hrdc-blue text-white px-4 py-2 rounded ml-80" type="submit">Submit</button>
+    <button class="bg-hrdc-blue text-white px-4 py-2 rounded ml-20" type="submit">Submit</button>
     <input type="checkbox" id="services" v-model="isChecked" class="ml-4">
     <label for="services" class="ml-2">Services Only</label>
 </form>
@@ -35,7 +36,7 @@
             </div>
   
             <div class="bg-white rounded-lg p-4 border-2 border-hrdc-blue m-4 w-full">
-              <h3 class="text-hrdc-blue text-lg font-semibold mb-2">Guest List:</h3>
+              <h3 class="text-white p-4 bg-hrdc-blue rounded text-lg font-semibold mb-2">Guest List:</h3>
               <ul class="grid grid-cols-2 gap-4">
                 <li v-for="guest in guestList" :key="guest.id">
                   <div class="relative">
@@ -49,7 +50,14 @@
                         </div>
                       </div>
                     </router-link> 
-                    <button @click="removeGuest(guest)" class="absolute top-0 right-0 bg-hrdc-blue hover:bg-red-500 text-white font-bold px-2 py-1 rounded-full transform transition duration-300 hover:scale-110">X</button>                      
+                    <div class="relative">
+                    <button @click="removeGuest(guest)"
+                    class="absolute top-0 right-0 bg-hrdc-blue hover:bg-hrdc-green text-white font-bold px-2 py-1 rounded-tl-10 rounded-full-lower transform transition duration-300 hover:scale-110 z-10"
+                        style="margin-top: -90px; margin-right: 0px; border-radius: 0px 5px 0px 5px;"
+                    >
+                        X
+                    </button>
+                    </div>
                   </div>
                 </li>
               </ul>
@@ -68,7 +76,7 @@
             </div>
           </div>
           <div class="mb-4">
-            <CounterCard :title="guestList.length + ' Guests Checked In'" :content="guestList.length + ' Overnight Stays'" class="w-full" />
+            <CounterCard :title="guestList.length + ' Guests Checked In'" :content="guestList.length + ' Overnight Stays'" class="w-full counter-card" />
           </div>
 
           <div class="bg-white rounded-lg p-4 border-2 border-bg-blue-900 w-full">
@@ -354,4 +362,8 @@
   .search-results li:hover {
     background-color: #f2f2f2;
   }
+  
+  .counter-card {
+    margin-left: -15px;
+}
   </style>
