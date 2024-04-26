@@ -4,15 +4,16 @@
         <br>
         <Wrapper>
           <div v-if="viewBunks">
-            <button @click="switchView" class="switch-btn">Edit lockers</button>
-            <button class="checkout-btn" @click="checkoutAll">Clear All</button>
+            <button @click="switchView" class="switch-btn bg-hrdc-blue">Edit lockers</button>
+            <button class="checkout-btn bg-hrdc-blue" @click="checkoutAll">Clear All</button>
+            <br>
             <br>
             <br>
             <div class="table-container">
               <div class="float-left">
-                <p class="text-2xl text-bg-blue-900"> {{ reservations.length }} Reservations</p>
-                <table class="w-full border-2 border-bg-blue-900">
-                    <thead class="bg-blue-900">
+                <p class="text-2xl text-bg-blue-900 text-center"> {{ reservations.length }} Reservations</p>
+                <table class="w-full border-2 border-bg-hrdc-blue">
+                    <thead class="bg-hrdc-blue">
                         <tr>
                             <th class="text-left p-3 text-white">Bunk<i class="bi-alarm"></i></th>
                             <th class="text-left p-3 text-white">Guest</th>
@@ -21,7 +22,7 @@
                     </thead>
                     <tbody class="rounded">
                         <tr 
-                          class="border-b-2 border-bg-blue-900 h-14" 
+                          class="border-b-2 border-bg-hrdc-blue h-14" 
                           v-for="(guest, index) in reservations" 
                           :key="index"
                           :class="{ 'bg-white': index % 2 === 0, 'bg-yellow-100': index % 2 !== 0 }"
@@ -30,7 +31,7 @@
                             <td class="px-3">{{ guest.firstName }} {{ guest.lastName }}</td>
                             <td class="px-3">
                               <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
-                                <button class="bg-blue-900 hover:bg-gray-500 text-white rounded px-3 py-2">View Profile</button>
+                                <button class="bg-hrdc-green hover:bg-gray-500 text-white font-bold rounded mb-5">View Profile</button>
                               </router-link>
                             </td>
                         </tr>
@@ -41,9 +42,9 @@
 
               <!-- Observation table -->
               <div class="float-left">
-                <p class="text-2xl text-bg-blue-900">Observation</p>
+                <p class="text-2xl text-bg-blue-900 text-center">Observation</p>
                 <table class="w-full border-2 border-bg-blue-900">
-                  <thead class="bg-blue-900">
+                  <thead class="bg-hrdc-blue">
                     <tr>
                       <th class="text-left p-3 text-white">Bunk<i class="bi-alarm"></i></th>
                       <th class="text-left p-3 text-white">Guest</th>
@@ -63,9 +64,9 @@
 
               <!-- Women's table -->
               <div class="float-left">
-                <p class="text-2xl text-bg-blue-900">Women's</p>
+                <p class="text-2xl text-bg-blue-900 text-center">Women's</p>
                 <table class="w-full border-2 border-bg-blue-900">
-                  <thead class="bg-blue-900">
+                  <thead class="bg-hrdc-blue">
                     <tr>
                       <th class="text-left p-3 text-white">Bunk<i class="bi-alarm"></i></th>
                       <th class="text-left p-3 text-white">Guest</th>
@@ -85,9 +86,9 @@
 
               <!-- Men's table -->
               <div class="float-left">
-                <p class="text-2xl text-bg-blue-900">Men's</p>
+                <p class="text-2xl text-bg-blue-900 text-center">Men's</p>
                 <table class="w-full border-2 border-bg-blue-900">
-                  <thead class="bg-blue-900">
+                  <thead class="bg-hrdc-blue">
                     <tr>
                       <th class="text-left p-3 text-white">Bunk<i class="bi-alarm"></i></th>
                       <th class="text-left p-3 text-white">Guest</th>
@@ -109,7 +110,7 @@
           </div>
           
           <div v-else>
-              <button @click="switchView" class="switch-btn">Edit bunks</button>
+              <button @click="switchView" class="switch-btn bg-hrdc-blue">Edit bunks</button>
               <br>
               <br>
               <div class="overflow-x-auto">
@@ -155,8 +156,8 @@
                     </div>
                     <div class="float-left">
                       <p class="text-2xl text-white">blank</p>
-                      <table class="w-full border-2 border-bg-blue-900">
-                        <thead class="bg-blue-900">
+                      <table class="w-full border-2 border-hrdc-blue">
+                        <thead class="hrdc-blue">
                           <tr>
                             <th class="text-left p-3 text-white">Number<i class="bi-alarm"></i></th>
                             <th class="text-left p-3 text-white">Guest</th>
@@ -174,8 +175,8 @@
                     </div>
                     <div class="float-left">
                       <p class="text-2xl text-white">blank</p>
-                      <table class="w-full border-2 border-bg-blue-900">
-                        <thead class="bg-blue-900">
+                      <table class="w-full border-2 border-hrdc-blue">
+                        <thead class="hrdc-blue">
                           <tr>
                             <th class="text-left p-3 text-white">Number<i class="bi-alarm"></i></th>
                             <th class="text-left p-3 text-white">Guest</th>
@@ -350,11 +351,11 @@ import store from "../store/store.js"
   .checkout-btn {
     position:absolute;
     top: 8%;
-    right: 1%;
-    background-color: rgba(30,58,138,255);
+    right: 7.5%;
+    background-color: hrdc-teal;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 100px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -367,11 +368,11 @@ import store from "../store/store.js"
   .switch-btn {
     position:absolute;
     top: 8%;
-    left: 1%;
-    background-color: rgba(30,58,138,255);
+    left: 7.5%;
+    background-color: hrdc-blue;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 100px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -383,7 +384,7 @@ import store from "../store/store.js"
 
   .checkout-btn:hover,
   .switch-btn:hover {
-    background-color: grey;
+    background-color: darkblue;
   }
 
 </style>
