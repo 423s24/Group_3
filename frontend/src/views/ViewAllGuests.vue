@@ -14,7 +14,7 @@
           </div>
             <p class="text-2xl text-bg-blue-900"> {{ filteredGuests.length }} Guest Entries </p>
             <table class="w-full border-2 border-bg-blue-900">
-                <thead class="bg-blue-900">
+                <thead class="bg-hrdc-blue">
                     <tr>
                         <th class="text-left p-3 text-white">First Name<i class="bi-alarm"></i></th>
                         <th class="text-left p-3 text-white">Last Name</th>
@@ -34,7 +34,7 @@
                         <td class="px-3">{{ formatDate(guest.latestCheckInDate) }}</td>
                         <td class="px-3">
                           <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
-                            <button class="bg-blue-900 hover:bg-gray-500 text-white rounded px-3 py-2">View Profile</button>
+                            <button class="bg-hrdc-green hover:bg-gray-500 text-white rounded mb-4">View Profile</button>
                           </router-link>
                         </td>
                     </tr>

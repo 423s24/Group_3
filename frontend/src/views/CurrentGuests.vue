@@ -3,7 +3,8 @@
         <Header />
         <br>
         <Wrapper>
-            <p class="text-2xl text-bg-blue-900"> {{ guests.length }} Current Guests </p>
+            <p class="text-2xl text-bg-hrdc-teal text-center"> {{ guests.length }} Current Guests </p>
+            <br>
             <table class="w-full border-2 border-bg-blue-900">
                 <thead class="bg-hrdc-blue">
                     <tr>
@@ -27,7 +28,7 @@
                         <td class="px-3">{{ guest.locker }}</td>
                         <td class="px-3">
                           <router-link :to="{ name: 'GuestProfile', params: { id: guest.id } }">
-                            <button class="bg-blue-900 hover:bg-gray-500 text-white rounded px-3 py-2">View Profile</button>
+                            <button class="bg-hrdc-green hover:bg-gray-500 text-white rounded mb-4">View Profile</button>
                           </router-link>
                         </td>
                     </tr>
