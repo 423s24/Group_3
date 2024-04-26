@@ -83,7 +83,7 @@ const getNumbers = asyncHandler(async (req, res) => {
         res.status(200).json({
             filledCount: filledCount,
             emptyCount_top: emptyCount_top,
-            emptyCount_bottom: emptyCount_top
+            emptyCount_bottom: emptyCount_bottom
         });
     } else {
         res.status(500);
