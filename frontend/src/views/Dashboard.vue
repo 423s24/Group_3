@@ -47,12 +47,6 @@ export default {
         guestsCheckedIn: 0,
         overnightStays: 0,
         servicesOnly: 0,
-        bunksAssigned: 0,
-        topBunksAvailable: 0,
-        bottomBunksAvailable: 0,
-        lockersAssigned: this.filledLockers,
-        dayLockersAvailable: 0,
-        storageLockersAvailable: this.emptyLockers
       },
       guestList: [],
       numbers: [],
@@ -107,15 +101,6 @@ export default {
     } else {
       console.error('User not found in local storage');
     }
-    // // Fetch initial data from MongoDB
-    // this.fetchGuestData();
-
-    // // Subscribe to real-time updates
-    // store.subscribe((mutation, state) => {
-    //   if (mutation.type === 'updateGuestData') {
-    //     this.guestData = state.guestData;
-    //   }
-    // });
   },
   methods: {
     async fetchGuestData() {
