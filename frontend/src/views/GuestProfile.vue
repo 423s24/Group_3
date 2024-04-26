@@ -188,7 +188,7 @@
 
           <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2">HMIS Status</label>
-            <span class="text-gray-700">{{ hmisStatus }}</span>
+            <span class="text-gray-700">{{ profile.hmis_valid }}</span>
           </div>
 
           <div class="mb-4">
