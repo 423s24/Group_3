@@ -137,7 +137,7 @@
           <div class="mb-4">
 
             <label class="block text-gray-700 font-bold mb-2">Behavior Status</label>
-            <span class="text-gray-700">{{ behaviorStatus }}</span>
+            <span class="text-gray-700">{{ profile.behaviorStatus }}</span>
           </div>
 
           <div class="mb-4">
