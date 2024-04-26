@@ -69,6 +69,9 @@ export const lockerModule = {
         getNumberFailure(state) {
             state.lockers = null;
             state.errorMessage = 'Unable to retrieve lockers number from database'
+        },
+        getAll(state) {
+            state.lockers = lockers;
         }
     }
 }

@@ -259,7 +259,7 @@ import store from "../store/store.js"
         console.error("Error fetching lockers:", error);
       });
 
-    },
+    }, 
     methods: {
       formatDate(dateString) {
         const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
