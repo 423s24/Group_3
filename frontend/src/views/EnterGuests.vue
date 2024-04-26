@@ -7,19 +7,19 @@
         <div class="w-2/3 p-4 m-4">
             <div class="w-full m-4 p-4">
               <form class="flex items-center justify-between w-full p-0 m-0" @submit.prevent="addGuest">
-    <label for="guestSearch" class="mr-2">Enter Guest:</label>
+    <label for="guestSearch" class="text-left">Enter Guest:</label>
     <div class="flex-grow">
         <input
-            class="w-full px-2 py-1 border rounded focus:outline-none focus:border-blue-500"
+            class="w-full border border-hrdc-green mr-50 rounded focus:outline-none focus:border-blue-500"
             type="text"
             id="guestSearch"
             v-model="searchQuery"
             placeholder="Search for a guest..."
         />
     </div>
-    <button class="bg-hrdc-blue text-white px-4 py-2 rounded" type="submit">Submit</button>
-    <input type="checkbox" id="services" v-model="isChecked">
-    <label for="services">Services Only</label>
+    <button class="bg-hrdc-blue text-white px-4 py-2 rounded ml-80" type="submit">Submit</button>
+    <input type="checkbox" id="services" v-model="isChecked" class="ml-4">
+    <label for="services" class="ml-2">Services Only</label>
 </form>
                     <div v-if="searchPredict.length > 0" class="search-results">
                         <ul>
