@@ -362,7 +362,7 @@ import store from "../store/store.js"
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 40px;
   }
 
   .switch-btn {
@@ -379,7 +379,7 @@ import store from "../store/store.js"
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 40px;
   }
 
   .checkout-btn:hover,
