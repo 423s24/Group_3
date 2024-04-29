@@ -9,7 +9,7 @@
           <router-link to="/enterguests" class="mr-6 hover:text-hrdc-orange">Enter Guests</router-link>
           <router-link to="/currentguests" class="mr-6 hover:text-hrdc-orange">View Current Guests</router-link>
           <router-link to="/assignspaces" class="mr-6 hover:text-hrdc-orange">Assign Spaces</router-link>
-          <router-link to="/viewallguests" class="mr-6 hover:text-hrdc-orange">View All Data</router-link>
+          <router-link to="/viewallguests" class="mr-6 hover:text-hrdc-orange">View All Guests</router-link>
           <router-link to="/resources" class="mr-6 hover:text-hrdc-orange">Resources</router-link>
           <router-link v-if="isAdmin === true" to="/user-management" class="mr-6 hover:text-hrdc-orange">Admin</router-link>
           <router-link to="/" class="mr-6 bg-hrdc-green hover:bg-hrdc-orange hover:text-white py-2 px-4 rounded-md transition duration-300" @click.native="logout">Logout</router-link>

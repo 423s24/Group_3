@@ -5,7 +5,14 @@
         <Wrapper>
           <div v-if="viewBunks">
             <button @click="switchView" class="switch-btn bg-hrdc-blue">Edit lockers</button>
-            <button class="checkout-btn bg-hrdc-blue" @click="checkoutAll">Clear All</button>
+            <button class="checkout-btn bg-hrdc-blue" @click="showCheckoutConfirm">Clear All</button>
+            <div v-if="showPopup" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+              <div class="bg-white p-8 rounded">
+                <p>Are you sure you want to clear all bunk info?</p>
+                <button @click="checkoutAll" class="bg-hrdc-blue text-white py-2 px-4 rounded mr-2 justify-center">Yes</button>
+                <button @click="cancelCheckout" class="bg-gray-400 text-white py-2 px-4 rounded justify-center">No</button>
+              </div>
+            </div>
             <br>
             <br>
             <br>
@@ -217,7 +224,8 @@ import store from "../store/store.js"
         reservations: [],
         bunks: [],
         viewBunks: true,
-        lockers: []
+        lockers: [],
+        showPopup: false
       };
     },
     async created(){
@@ -303,6 +311,15 @@ import store from "../store/store.js"
             console.error("Error updating bunk:", error);
           });
       },
+
+      showCheckoutConfirm(){
+        this.showPopup = true;
+      },
+
+      cancelCheckout(){
+        this.showPopup = false;
+      },
+
       checkoutAll(){
         const bunksToClear = this.bunks
         for(const bunk of bunksToClear){
@@ -317,6 +334,7 @@ import store from "../store/store.js"
             console.error("Error updating bunk:", error);
           });
         }
+        this.showPopup = false;
       },
       switchView(){
         this.viewBunks = !this.viewBunks
