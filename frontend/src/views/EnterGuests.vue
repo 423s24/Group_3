@@ -67,7 +67,7 @@
         <div class="w-1/3 p-4 flex flex-col justify-start">
           <div class="mb-4">
             <button @click="showCheckoutConfirm" class="bg-hrdc-green text-white py-2 px-4 rounded-md hover:bg-hrdc-teal">Checkout All Guests</button>
-            <div v-if="showPopup" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+            <div v-if="showPopup" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
               <div class="bg-white p-8 rounded">
                 <p>Are you sure you want to check out all guests?</p>
                 <button @click="checkoutAll" class="bg-hrdc-blue text-white py-2 px-4 rounded mr-2 justify-center">Yes</button>
@@ -85,10 +85,6 @@
               <div class="border-black border-2 w-10 h-10 m-3"></div>
               <div>No Discrepancies</div>
             </div>
-            <!-- <div class="flex items-center mb-2">
-              <div class="bg-purple-400 bg-opacity-50 border-black border-2 w-10 h-10 m-3"></div>
-              <div>Has Recent Notes</div>
-            </div> -->
             <div class="flex items-center mb-2">
               <div class="bg-yellow-300 bg-opacity-50 border-black border-2 w-10 h-10 m-3"></div>
               <div>Need Info Added to HMIS</div>
@@ -275,24 +271,6 @@
         const comparedDateFormatted = new Date(comparedDate.getFullYear(), comparedDate.getMonth(), comparedDate.getDate());
 
         return comparedDateFormatted.getTime() === yesterday.getTime();
-      },
-
-      getBackgroundColorClass(guest){
-        if((guest.bx_noTrespass === true && guest.hmis_valid === false)){
-          return 'linear-gradient(to right, rgb(239, 68, 68, 0.5), rgb(239, 68, 68, 0.5) 50%, rgb(253, 224, 71, 0.5), rgb(253, 224, 71, 0.5) 50%)'
-        }
-        else if((guest.bx_noTrespass === true)){
-          return 'linear-gradient(90deg, rgb(239, 68, 68, 0.5), rgb(239, 68, 68, 0.5)'
-        }
-        else if(guest.hmis_valid === false){
-          return 'linear-gradient(90deg, rgb(253, 224, 71, 0.5), rgb(253, 224, 71, 0.5 ))'
-        }
-        else if(guest.laundry === true){
-          return 'linear-gradient(90deg, rgb(54 83 20 / var(--tw-bg-opacity))'
-        }
-        else{
-          return 'linear-gradient(90deg, white, white)'
-        }
       },
 
       getBackgroundColorHMIS(guest){

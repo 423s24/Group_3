@@ -6,7 +6,7 @@
           <div v-if="viewBunks">
             <button @click="switchView" class="switch-btn bg-hrdc-blue">Edit lockers</button>
             <button class="checkout-btn bg-hrdc-blue" @click="showCheckoutConfirm">Clear All</button>
-            <div v-if="showPopup" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+            <div v-if="showPopup" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
               <div class="bg-white p-8 rounded">
                 <p>Are you sure you want to clear all bunk info?</p>
                 <button @click="checkoutAll" class="bg-hrdc-blue text-white py-2 px-4 rounded mr-2 justify-center">Yes</button>
