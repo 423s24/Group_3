@@ -33,7 +33,8 @@
                             </li>
                          </ul>
                     </div>   
-            </div>
+                  </div>
+
   
             <div class="bg-white rounded-lg p-4 border-2 border-hrdc-blue m-4 w-full">
               <h3 class="text-white p-4 bg-hrdc-blue rounded text-lg font-semibold mb-2">Guest List:</h3>
@@ -44,9 +45,9 @@
                       <div class="p-4 border-2 border-hrdc-blue font-bold text-hrdc-blue text-md rounded cursor-pointer transition-transform transform hover:scale-105 hover:duration-300 text-center">
                         {{ guest.firstName + " " + guest.lastName}}
                         <div class="flex flex-row justify-center">
-                          <div :style="{ backgroundImage: getBackgroundColorHMIS(guest)}" class="h-8 w-8 rounded-full border-2 border-hrdc-blue"></div>
-                          <div :style="{ backgroundImage: getBackgroundColorNoTrespass(guest)}" class="h-8 w-8 rounded-full border-2 border-hrdc-blue"></div>
-                          <div :style="{ backgroundImage: getBackgroundColorServicesOnly(guest)}" class="h-8 w-8 rounded-full border-2 border-hrdc-blue"></div>
+                          <div :style="{ backgroundImage: getBackgroundColorHMIS(guest)}" class="h-8 w-8 rounded-full "></div>
+                          <div :style="{ backgroundImage: getBackgroundColorNoTrespass(guest)}" class="h-8 w-8 rounded-full"></div>
+                          <div :style="{ backgroundImage: getBackgroundColorServicesOnly(guest)}" class="h-8 w-8 rounded-full "></div>
                         </div>
                       </div>
                     </router-link> 
