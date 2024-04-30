@@ -211,10 +211,6 @@
       },
       
       selectResult(result) {
-        // if(this.isChecked === true){
-        //   console.log("test")
-        // }
-        
         this.checkin(result)
         this.searchQuery = ""
       },

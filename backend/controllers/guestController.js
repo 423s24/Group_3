@@ -137,7 +137,7 @@ const updateGuestById = asyncHandler(async (req, res) => {
     foundGuest.isActive = profile.isActive;
     foundGuest.consecutiveDaysStayed = profile.consecutiveDaysStayed;
     foundGuest.latestCheckInDate = profile.latestCheckInDate;
-    foundGuest.HMIS.isValid = profile.hmis_isValid;
+    foundGuest.HMIS.isValid = profile.hmis_valid;
     foundGuest.HMIS.enterDate = profile.hmis_date;
     foundGuest.accommodation.hasAcc = profile.has_accommodation;
     foundGuest.accommodation.accDesc = profile.desc_accommodation;
@@ -160,7 +160,8 @@ const updateGuestById = asyncHandler(async (req, res) => {
                 lastName: updatedGuest.lastName,
                 DOB: updatedGuest.DOB,
                 has_accommodation: updatedGuest.accommodation.hasAcc,
-                desc_accommodation: updatedGuest.accommodation.accDesc
+                desc_accommodation: updatedGuest.accommodation.accDesc,
+                hmis_valid: updatedGuest.HMIS.isValid
             }
         });
     } else {
