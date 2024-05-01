@@ -53,7 +53,7 @@
                     </router-link> 
                     <div class="relative">
                     <button @click="removeGuest(guest)"
-                    class="absolute top-0 right-0 bg-hrdc-blue hover:bg-hrdc-green text-white font-bold px-2 py-1 rounded-tl-10 rounded-full-lower transform transition duration-300 hover:scale-110 z-10"
+                    class="absolute top-0 right-0 bg-hrdc-blue hover:bg-hrdc-green text-white font-bold px-2 py-1 rounded-tl-10 rounded-full-lower transform transition duration-300 hover:scale-110 z-0"
                         style="margin-top: -90px; margin-right: 0px; border-radius: 0px 5px 0px 5px;"
                     >
                         X
